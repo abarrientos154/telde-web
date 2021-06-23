@@ -10,6 +10,7 @@
         <div class="q-pt-md q-px-md">
           <q-btn icon="keyboard_backspace" round color="grey-4" text-color="grey" @click="$router.go(-1)" />
         </div>
+        <div class="column items-center justify-center">
         <div class="column items-center justify-center q-mx-md">
           <div class="column items-center justify-center">
             <div class="row justify-center">
@@ -76,10 +77,11 @@
               <q-checkbox v-model="terminos_condiciones" :class="textColor" @input="terminos_condiciones ? textColor = 'text-black' : ''" label="Acepto término y condiciones de uso*" />
             </div>
             <div class="col-xs-11 col-sm-11 col-md-7 col-lg-7 col-xl-7 row items-center justify-center q-my-lg">
-              <q-btn no-caps label="Siguiente" color="primary" size="lg" style="border-radius: 25px; width: 80%"
+              <q-btn no-caps label="Siguiente" color="primary" size="lg" style="border-radius: 25px; width: 50%"
               @click="siguiente()" />
             </div>
           </div>
+        </div>
         </div>
       </q-carousel-slide>
 
@@ -87,6 +89,7 @@
         <div class="q-pa-md">
           <q-btn icon="keyboard_backspace" round color="grey-4" text-color="grey" @click="slide = 1" />
         </div>
+        <div class="column items-center justify-center">
         <div class="column items-center justify-center q-mx-md">
           <div class="row justify-center" style="width:100%">
             <div class="col-xs-11 col-sm-11 col-md-7 col-lg-7 col-xl-7 row justify-center">
@@ -141,10 +144,11 @@
               />
             </div>
             <div class="col-xs-11 col-sm-11 col-md-7 col-lg-7 col-xl-7 row items-center justify-center q-my-lg">
-              <q-btn no-caps label="Finalizar" color="primary" size="lg" style="border-radius: 25px; width: 80%"
+              <q-btn no-caps label="Finalizar" color="primary" size="lg" style="border-radius: 25px; width: 50%"
               @click="registrar()" />
             </div>
           </div>
+        </div>
         </div>
       </q-carousel-slide>
 
@@ -156,7 +160,7 @@
           </div>
           <div class="text-center text-subtitle1">¡Registro Exitoso!</div>
           <div class="row items-center justify-center q-mt-lg" style="width:100%">
-            <q-btn no-caps label="Ir a Nova Telde" color="primary" size="lg" style="border-radius: 25px; width: 80%"
+            <q-btn no-caps label="Ir a Nova Telde" color="primary" size="lg" style="border-radius: 25px; width: 40%"
             @click="onSubmit()" />
           </div>
         </div>

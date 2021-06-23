@@ -2,35 +2,30 @@
   <div>
     <img :src="!principal.nuevo ? baseuPublicidad + principal.fileName : principal.fileName" style="height: 400px; width: 100%;"
     @click="!principal.nuevo ? irRuta(principal.ruta) : ''" />
-
+    <div class="q-pa-xl">
     <div class="text-h5 q-my-md text-center text-grey-8 text-bold">¡Busca lo que necesites!</div>
-    <div class="text-h6 q-mx-md text-grey-8">Categorias</div>
-    <q-scroll-area
-      horizontal
-      style="height: 80px;"
-    >
-      <div class="row no-wrap q-py-md q-px-md q-gutter-md">
-        <div v-for="(btn, index) in categorias" :key="index" >
-          <q-btn no-caps class="q-px-md" :label="btn" :color="selecCategoria === btn ? 'primary' : 'blue-grey-11'" text-color="blue-grey-9"
-          @click="filterCategoria(btn, 'cat')" />
+    <div class="column items-center justify-center">
+      <div class="text-h6 q-mx-md text-grey-8">Categorias</div>
+    </div>
+    <div class="column items-center justify-center">
+        <div class="row q-py-md q-px-md q-gutter-md">
+          <div v-for="(btn, index) in categorias" :key="index" >
+            <q-btn no-caps class="q-px-md" :label="btn" :color="selecCategoria === btn ? 'primary' : 'blue-grey-11'" text-color="blue-grey-9"
+            @click="filterCategoria(btn, 'cat')" />
+          </div>
+        </div>
+      <div v-if="subCategorias.length" class="text-h6 q-mx-md text-grey-8">Sub categorias</div>
+      <div v-if="subCategorias.length">
+        <div class="row no-wrap q-py-md q-px-md q-gutter-md">
+          <div v-for="(btn, index) in subCategorias" :key="index" >
+            <q-btn no-caps class="q-px-md" :label="btn" :color="selecSubCategoria === btn ? 'primary' : 'blue-grey-11'" text-color="blue-grey-9"
+            @click="filterCategoria(btn, 'sub')" />
+          </div>
         </div>
       </div>
-    </q-scroll-area>
-    <div v-if="subCategorias.length" class="text-h6 q-mx-md text-grey-8">Sub categorias</div>
-    <q-scroll-area
-      v-if="subCategorias.length"
-      horizontal
-      style="height: 80px;"
-    >
-      <div class="row no-wrap q-py-md q-px-md q-gutter-md">
-        <div v-for="(btn, index) in subCategorias" :key="index" >
-          <q-btn no-caps class="q-px-md" :label="btn" :color="selecSubCategoria === btn ? 'primary' : 'blue-grey-11'" text-color="blue-grey-9"
-          @click="filterCategoria(btn, 'sub')" />
-        </div>
-      </div>
-    </q-scroll-area>
+    </div>
     <div class="q-my-md row justify-center">
-      <q-btn :disable="selecCategoria === '' ? true : false" style="width:50%" rounded no-caps color="primary" label="Buscar"
+      <q-btn :disable="selecCategoria === '' ? true : false" style="width:20%" rounded no-caps color="primary" label="Buscar"
       @click="filterTiendas()"/>
     </div>
 
@@ -176,6 +171,7 @@
         </q-card-section>
       </q-card>
     </q-dialog>
+  </div>
   </div>
 </template>
 

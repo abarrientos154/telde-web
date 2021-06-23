@@ -7,6 +7,7 @@
       infinite
     >
       <q-carousel-slide :name="1" class="q-pa-none">
+      <div class="column items-center justify-center">
         <q-img :src="portada ? portadaImg : 'nopublicidad.jpg'" style="height: 250px; width: 100%; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px" >
             <div class="bg-transparent">
                 <q-btn icon="keyboard_backspace" round color="grey-4" text-color="grey" @click="$router.go(-1)" />
@@ -143,12 +144,14 @@
             </div>
           </div>
         </div>
+      </div>
       </q-carousel-slide>
 
       <q-carousel-slide :name="2" >
           <div class="q-pt-md q-px-md">
             <q-btn icon="keyboard_backspace" round color="grey-4" text-color="grey" @click="slide = 1" />
           </div>
+          <div class="column items-center justify-center q-pa-xl">
           <div class="text-center text-h6 q-mb-md">Información tienda</div>
           <div class="row justify-center">
                 <div class="col-xs-11 col-sm-11 col-md-7 col-lg-7 col-xl-7">
@@ -244,16 +247,18 @@
                     </div>
                 </q-scroll-area>
                 <div class="col-xs-11 col-sm-11 col-md-7 col-lg-7 col-xl-7 row items-center justify-center q-my-lg">
-                    <q-btn no-caps label="Siguiente" color="primary" size="lg" style="border-radius: 25px; width: 80%"
+                    <q-btn no-caps label="Siguiente" color="primary" size="lg" style="border-radius: 25px; width: 50%"
                     @click="siguiente2()" />
                 </div>
           </div>
+      </div>
       </q-carousel-slide>
 
       <q-carousel-slide :name="3" >
           <div class="q-pa-md">
             <q-btn icon="keyboard_backspace" round color="grey-4" text-color="grey" @click="slide = 2" />
           </div>
+          <div class="column items-center justify-center q-pa-xl">
           <div class="text-center text-h6 text-bold q-mb-md">Información de transferencia</div>
           <div class="text-center text-subtitle1">Esta información es utilizada para realizar los pagos una vez aprobada la solicitud de retiro</div>
           <div class="row justify-center q-gutter-xs q-mt-lg">
@@ -279,20 +284,21 @@
               <q-checkbox v-model="confirma_datos" :class="textColorBanco" @input="confirma_datos ? textColorBanco = 'text-black' : ''" label="Confirmo que estos datos son reales" />
             </div>
             <div class="col-xs-11 col-sm-6 col-md-6 col-lg-6 row items-center justify-center q-my-lg">
-              <q-btn no-caps label="Finalizar" color="primary" size="lg" style="border-radius: 25px; width: 80%"
+              <q-btn no-caps label="Finalizar" color="primary" size="lg" style="border-radius: 25px; width: 50%"
                 @click="registrar()" />
             </div>
+          </div>
           </div>
       </q-carousel-slide>
 
       <q-carousel-slide :name="4" >
-        <div class="absolute-center" style="width:100%">
+        <div class="absolute-center" style="width:80%">
           <div class="q-mb-md row justify-center">
-            <q-img src="nova_telde-06.png" style="width:100%" >
+            <q-img src="nova_telde-06.png" style="width:70%" >
             </q-img>
           </div>
           <div class="row items-center justify-center q-mt-lg" style="width:100%">
-            <q-btn no-caps label="Pagar Membresía" color="primary" size="lg" style="border-radius: 25px; width: 80%"
+            <q-btn no-caps label="Pagar Membresía" color="primary" size="lg" style="border-radius: 25px; width: 40%"
             @click="$router.push('/pago-membresia/' + id + '/1')" />
           </div>
         </div>
