@@ -164,7 +164,7 @@ export default {
       }
     },
     async redirPay () {
-      const ruta = `${this.apiUrl}&costoM=${this.costoMembresia}&cantMeses=${this.cantidad}`
+      const ruta = `${this.apiUrl}&costoM=${this.costoMembresia}&cantMeses=${this.cantidad}&type=web&op=membresia`
       await openURL(ruta)
       navigator.app.exitApp()
     }

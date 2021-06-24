@@ -74,22 +74,24 @@ export default {
   },
   mounted () {
     const vm = this
-    if (this.$q.platform.is.mobile) { // Si es teléfono{
-      universalLinks.subscribe('ul_payStripe', function (eventData) {
-        // do some work
-        // alert('Did launch application from the link: ' + eventData.url)
-        if (eventData.params.user_id) {
-          vm.aprobarPago({ user_id: eventData.params.user_id, cantM: eventData.params.cantM, costoM: eventData.params.costoM })
-        } else {
-          vm.$q.notify({
-            message: 'Su pago no fue procesado',
-            color: 'negative'
-          })
-        }
-      })
+    this.logout()
+    if (this.$route.query.user_id) {
+      var eventData = { ...this.$route.query }
+      console.log({ ...this.$route.query })
+      if (eventData.op === 'membresia') {
+        vm.aprobarPago({ user_id: eventData.user_id, cantM: eventData.cantM, costoM: eventData.costoM })
+      } else if (eventData.type === 'pago') {
 
+      } else {
+        vm.$q.notify({
+          message: 'Su pago no fue procesado',
+          color: 'negative'
+        })
+      }
+    }
+    if (this.$q.platform.is.mobile) { // Si es teléfono{
       universalLinks.subscribe('ul_payStripeShop', function (eventData) {
-        // vm.dd = eventData.params
+        // vm.dd = eventData
         // vm.noLogin = true
         if (eventData.params.cancel) {
           vm.pago_ok({ user_id: eventData.params.user_id, tienda_id: eventData.params.tienda_id, ref: eventData.params.ref, cancel: eventData.params.cancel })
@@ -102,7 +104,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations('generals', ['login']),
+    ...mapMutations('generals', ['login', 'logout']),
     async pago_ok (data) {
       this.$q.loading.show({
         message: 'Procesando'
