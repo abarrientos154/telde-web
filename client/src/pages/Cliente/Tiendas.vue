@@ -5,32 +5,27 @@
         <div class="absolute-center full-width text-bold text-h5 text-center">Conoce nuestras tiendas</div>
       </div>
     </q-img>
+    <div class="column items-center justify-center">
+     <div class="text-h6 q-mx-md text-grey-8 q-mt-md">Categoria</div>
+    </div>
 
-    <div class="text-h6 q-mx-md text-grey-8 q-mt-md">Categoria</div>
-    <q-scroll-area
-      horizontal
-      style="height: 80px;"
-    >
+      <div class="column items-center justify-center">
       <div class="row no-wrap q-py-md q-px-md q-gutter-md">
         <div v-for="(btn, index) in categorias" :key="index" >
           <q-btn no-caps class="q-px-md" :label="btn" :color="selecCategoria === btn ? 'primary' : 'blue-grey-11'" text-color="blue-grey-9"
           @click="filterCategoria(btn, 'cat')" />
         </div>
       </div>
-    </q-scroll-area>
     <div v-if="subCategorias.length" class="text-h6 q-mx-md text-grey-8">Selecciona tu SubCategoria</div>
-    <q-scroll-area
-      v-if="subCategorias.length"
-      horizontal
-      style="height: 80px;"
-    >
+    <div v-if="subCategorias.length">
       <div class="row no-wrap q-py-md q-px-md q-gutter-md">
         <div v-for="(btn, index) in subCategorias" :key="index" >
           <q-btn no-caps class="q-px-md" :label="btn" :color="selecSubCategoria === btn ? 'primary' : 'blue-grey-11'" text-color="blue-grey-9"
           @click="filterCategoria(btn, 'sub')" />
         </div>
       </div>
-    </q-scroll-area>
+    </div>
+    </div>
     <div class="q-my-md row justify-center">
       <q-btn :disable="selecCategoria === '' ? true : false" style="width:50%" rounded no-caps color="primary" label="Buscar"
       @click="filterTiendas()"/>

@@ -7,24 +7,28 @@
     </q-img>
 
       <div class="q-px-lg q-mt-lg">
-        <div class="q-mt-sm text-subtitle1">Nombre completo</div>
-        <div class="text-subtitle2">{{form.name}} {{form.lastName}}</div>
+      <div class="row justify-between items-center q-mt-sm">
+        <div>
+          <div class="q-mt-sm text-subtitle1">Nombre completo</div>
+          <div class="text-subtitle2">{{form.name}} {{form.lastName}}</div>
+        </div>
+          <div>
+            <q-btn no-caps color="primary" label="Editar Perfil" @click="$router.push('/editar-mi-perfil')"/>
+          </div>
+      </div>
         <div class="q-mt-sm text-subtitle1">Numero de Contacto</div>
         <div class="text-subtitle2 text-grey-7">{{form.telefono}}</div>
-        <div class="row justify-between items-center q-mt-sm">
           <div>
             <div class="text-subtitle1">Correo de Contacto</div>
             <div class="text-subtitle2">{{form.email}}</div>
           </div>
-          <div>
-            <q-btn no-caps color="primary" label="Editar Perfil" @click="$router.push('/editar-mi-perfil')"/>
-          </div>
-        </div>
       </div>
 
-      <div class="text-h6 q-ma-lg text-grey-8">Mis direcciones</div>
+      <div class="column items-center justify-center">
+        <div class="text-h6 q-ma-lg text-grey-8">Mis direcciones</div>
+      </div>
       <div class="column items-center q-gutter-md">
-          <q-card v-for="(card, index) in form.direccionC" :key="index" class="shadow-10" style="width: 90%;height:120px;border-radius:25px;">
+          <q-card v-for="(card, index) in form.direccionC" :key="index" class="shadow-10" style="width: 30%;height:120px;border-radius:25px;">
             <q-card-section class="row items-start justify-between">
               <div class="col-8 no-wrap">
                 <div class="text-h6 text-bold ellipsis">Dirección Registrada</div>
@@ -42,11 +46,13 @@
           </q-card>
       </div>
       <div class="column items-center justify-center q-py-md">
-        <q-btn no-caps rounded color="primary" label="Agregar nueva" size="lg" style="width:70%"
+        <q-btn no-caps rounded color="primary" label="Agregar nueva" size="lg" style="width:20%"
         @click="actionDir(2)" />
       </div>
 
-      <div class="q-ma-lg text-h6 text-grey-8">Pedidos pendientes por recibir</div>
+      <div class="column items-center justify-center">
+        <div class="q-ma-lg text-h6 text-grey-8">Pedidos pendientes por recibir</div>
+      </div>
       <q-scroll-area
         v-if="pendientes.length"
         horizontal
