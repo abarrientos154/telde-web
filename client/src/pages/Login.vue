@@ -80,8 +80,12 @@ export default {
       console.log({ ...this.$route.query })
       if (eventData.op === 'membresia') {
         vm.aprobarPago({ user_id: eventData.user_id, cantM: eventData.cantM, costoM: eventData.costoM })
-      } else if (eventData.type === 'pago') {
-
+      } else if (eventData.op === 'pago') {
+        if (eventData.cancel) {
+          vm.pago_ok({ user_id: eventData.user_id, tienda_id: eventData.tienda_id, ref: eventData.ref, cancel: eventData.cancel })
+        } else {
+          vm.pago_ok({ user_id: eventData.user_id, tienda_id: eventData.tienda_id, ref: eventData.ref })
+        }
       } else {
         vm.$q.notify({
           message: 'Su pago no fue procesado',
