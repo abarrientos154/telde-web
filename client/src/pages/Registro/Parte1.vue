@@ -6,8 +6,8 @@
           <div class="q-px-md q-pt-md">
             <q-btn icon="keyboard_backspace" round color="grey-4" text-color="grey" @click="$router.go(-1)" />
           </div>
-          <div class="row justify-center absolute-center" style="width:50%">
-            <q-img src="nova_telde-04.png" style="width:50%" >
+          <div class="row justify-center absolute-center" style="width:55%">
+            <q-img src="nova_telde-04.png" style="width:55%" >
             </q-img>
           </div>
           <div class="absolute-bottom q-mb-xl" style="width:100%">

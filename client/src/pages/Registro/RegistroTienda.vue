@@ -292,9 +292,9 @@
       </q-carousel-slide>
 
       <q-carousel-slide :name="4" >
-        <div class="absolute-center" style="width:80%">
+        <div class="absolute-center" style="width:55%">
           <div class="q-mb-md row justify-center">
-            <q-img src="nova_telde-06.png" style="width:70%" >
+            <q-img src="nova_telde-06.png" style="width:55%" >
             </q-img>
           </div>
           <div class="row items-center justify-center q-mt-lg" style="width:100%">

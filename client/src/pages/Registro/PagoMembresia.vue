@@ -10,9 +10,9 @@
           <div class="row">
             <q-btn icon="keyboard_backspace" round color="grey-4" text-color="grey" @click="$router.push('/login')" />
           </div>
-          <div class="absolute-center" style="width:70%">
+          <div class="absolute-center" style="width:55%">
             <div class="q-mb-md row justify-center">
-              <q-img src="nova_telde-05.png" style="width:70%" >
+              <q-img src="nova_telde-05.png" style="width:55%" >
               </q-img>
             </div>
             <div class="row items-center justify-center q-mt-lg" style="width:100%">
