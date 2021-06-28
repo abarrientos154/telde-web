@@ -551,7 +551,7 @@ export default {
         this.$api.post('comprar_productos', { dat: this.form, carrito: this.carrito }).then(async res => {
           if (res) {
             var apiUrl = env.apiUrl + '/pagar_telde?tienda_id=' + this.user._id
-            const ruta = `${apiUrl}&montoTotal=${this.form.totalValor}&ref=${ref}&user_id=${this.cliente._id}`
+            const ruta = `${apiUrl}&montoTotal=${this.form.totalValor}&ref=${ref}&user_id=${this.cliente._id}&type=web&op=pago`
             await openURL(ruta)
             navigator.app.exitApp()
             /* this.comprarCarrito = false
