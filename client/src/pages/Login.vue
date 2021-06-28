@@ -118,7 +118,9 @@ export default {
       this.dd.c = data.cancel === '1' ? 'pago_no_ok' : 'pago_ok'
       this.noLogin = true */
       await this.$api.post(data.cancel ? 'pago_no_ok' : 'pago_ok', data).then(res => {
-        this.logeo_ok({ ...data })
+        if (res) {
+          this.logeo_ok({ ...data })
+        }
       })
     },
     async aprobarPago (datos) {
