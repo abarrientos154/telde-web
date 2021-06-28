@@ -27,7 +27,7 @@
     </div>
     </div>
     <div class="q-my-md row justify-center">
-      <q-btn :disable="selecCategoria === '' ? true : false" style="width:50%" rounded no-caps color="primary" label="Buscar"
+      <q-btn :disable="selecCategoria === '' ? true : false" style="width:20%" rounded no-caps color="primary" label="Buscar"
       @click="filterTiendas()"/>
     </div>
 
@@ -61,7 +61,7 @@
     </div>
     <div v-else class="text-center text-h6 q-my-lg">No existen tiendas creadas</div>
     <div v-if="verTiendas && tiendas.length" class="row justify-center q-ma-md">
-      <q-btn rounded no-caps color="primary" @click="verMas()" label="Ver más tiendas" size="lg" style="width: 80%;" />
+      <q-btn rounded no-caps color="primary" @click="verMas()" label="Ver más tiendas" size="lg" style="width: 20%;" />
     </div>
   </div>
 </template>

@@ -160,7 +160,7 @@
       </div>
       <div v-else class="text-center text-h6 q-my-lg">No hay ninguna tienda</div>
       <div v-if="masTiendas.length" class="row items-center justify-center q-mt-lg">
-        <q-btn no-caps rounded label="Ver más tiendas" color="primary" size="lg" style="width: 80%"
+        <q-btn no-caps rounded label="Ver más tiendas" color="primary" size="lg" style="width: 20%"
         @click="$router.push('/tiendas')"/>
       </div>
 

@@ -23,7 +23,7 @@
             </div>
         </q-img>
 
-        <div class="column items-center justify-center q-ma-md">
+        <div class="column items-center justify-center q-ma-md q-pa-xl">
           <div class="row justify-center" style="width: 100%">
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 row justify-between items-start">
                 <div class="col-xs-4 col-sm-12 col-md-5 col-lg-5 col-xl-5 column items-center justify-center">
@@ -136,7 +136,7 @@
               </div>
             </q-scroll-area>
             <div class="col-xs-11 col-sm-6 col-md-6 col-lg-6 row items-center justify-center q-my-lg">
-              <q-btn no-caps label="Siguiente" color="primary" size="lg" style="border-radius: 25px; width: 80%"
+              <q-btn no-caps label="Siguiente" color="primary" size="lg" style="border-radius: 25px; width: 40%"
               @click="siguiente()" />
             </div>
           </div>
@@ -147,7 +147,7 @@
           <div class="q-pt-md q-px-md">
             <q-btn icon="keyboard_backspace" round color="grey-4" text-color="grey" @click="slide = 1" />
           </div>
-          <div class="text-center text-h6 q-mb-md">Información tienda</div>
+          <div class="text-center text-h6 q-mb-md q-pa-xl">Información tienda</div>
           <div class="row justify-center">
                 <div class="col-xs-11 col-sm-11 col-md-7 col-lg-7 col-xl-7">
                   <div class="text-subtitle2 text-grey-8">Provincia</div>
@@ -223,7 +223,7 @@
                     </div>
                 </q-scroll-area>
                 <div class="col-xs-11 col-sm-11 col-md-7 col-lg-7 col-xl-7 row items-center justify-center q-my-lg">
-                    <q-btn no-caps label="Siguiente" color="primary" size="lg" style="border-radius: 25px; width: 80%"
+                    <q-btn no-caps label="Siguiente" color="primary" size="lg" style="border-radius: 25px; width: 40%"
                     @click="siguiente2()" />
                 </div>
           </div>
@@ -233,7 +233,7 @@
           <div class="q-pa-md">
             <q-btn icon="keyboard_backspace" round color="grey-4" text-color="grey" @click="slide = 2" />
           </div>
-          <div class="text-center text-h6 text-bold q-mb-md">Información de transferencia</div>
+          <div class="text-center text-h6 text-bold q-mb-md q-pa-xl">Información de transferencia</div>
           <div class="text-center text-subtitle1">Esta información es utilizada para realizar los pagos una vez aprobada la solicitud de retiro</div>
           <div class="row justify-center q-gutter-xs q-mt-lg">
             <div class="col-xs-11 col-sm-11 col-md-7 col-lg-7 col-xl-7">
@@ -258,20 +258,20 @@
               <q-checkbox v-model="confirma_datos" :class="textColorBanco" @input="confirma_datos ? textColorBanco = 'text-black' : ''" label="Confirmo que estos datos son reales" />
             </div>
             <div class="col-xs-11 col-sm-6 col-md-6 col-lg-6 row items-center justify-center q-my-lg">
-              <q-btn no-caps label="Guardar" color="primary" size="lg" style="border-radius: 25px; width: 80%"
+              <q-btn no-caps label="Guardar" color="primary" size="lg" style="border-radius: 25px; width: 40%"
                 @click="guardar()" />
             </div>
           </div>
       </q-carousel-slide>
 
       <q-carousel-slide :name="4" >
-        <div class="absolute-center" style="width:100%">
+        <div class="absolute-center" style="width:55%">
           <div class="q-mb-md row justify-center">
-            <q-img src="nova_telde-06.png" style="width:100%" >
+            <q-img src="nova_telde-06.png" style="width:50%" >
             </q-img>
           </div>
           <div class="row items-center justify-center q-mt-lg" style="width:100%">
-            <q-btn no-caps label="Ir a Nova Telde" color="primary" size="lg" style="border-radius: 25px; width: 80%"
+            <q-btn no-caps label="Ir a Nova Telde" color="primary" size="lg" style="border-radius: 25px; width: 40%"
             @click="$router.go(-1)" />
           </div>
         </div>

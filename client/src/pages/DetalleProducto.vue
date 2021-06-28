@@ -28,9 +28,9 @@
         </div>
 
         <div class="row justify-center q-py-lg">
-          <q-btn v-if="lugar !== 'tienda'" no-caps label="Ver tienda" color="primary" size="md" style="border-radius: 15px; width: 90%"
+          <q-btn v-if="lugar !== 'tienda'" no-caps label="Ver tienda" color="primary" size="md" style="border-radius: 15px; width: 45%"
           @click="irTienda()" />
-          <q-btn v-if="lugar === 'tienda'" no-caps label="Agregar producto" color="primary" size="md" style="border-radius: 15px; width: 90%"
+          <q-btn v-if="lugar === 'tienda'" no-caps label="Agregar producto" color="primary" size="md" style="border-radius: 15px; width: 45%"
           @click="login ? addCarrito() : noLogin = true" />
         </div>
 

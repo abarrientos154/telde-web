@@ -92,7 +92,7 @@
 
       <div class="q-py-md text-center text-h6 text-grey-8">Historial de pedidos completados</div>
       <div v-if="completados.length" class="column items-center justify-center no-wrap q-gutter-md">
-        <q-card v-for="(item, index) in completados" :key="index" class="shadow-10" style="width: 90%;border-radius:25px;">
+        <q-card v-for="(item, index) in completados" :key="index" class="shadow-10" style="width: 30%;border-radius:25px;">
           <q-card-section horizontal>
               <q-card-section>
                 <div class="column items-center justify-center">
@@ -116,7 +116,7 @@
               </q-card-section>
             </q-card-section>
         </q-card>
-        <q-btn no-caps rounded color="primary" label="Ver mas" size="lg" style="width:80%" />
+        <q-btn no-caps rounded color="primary" label="Ver mas" size="lg" style="width:20%" />
       </div>
       <div v-else class="q-my-lg">
         <div class="text-center text-subtitle1">No tienes pedidos completados</div>

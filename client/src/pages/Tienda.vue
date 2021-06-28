@@ -12,58 +12,60 @@
       </div>
     </q-img>
 
-    <div class="row justify-between items-start q-pa-sm" style="width:100%">
-      <div class="col-5 column items-center justify-center">
+    <div class="column items-center justify-center q-pa-sm" style="width:100%">
+    <div class="row" style="width:100%">
+      <div class="col-5 column items-center justify-center" style="width:60%">
         <div>
           <q-img :src="baseuPerfil"
             style="height: 110px; width: 110px; border-radius: 24px" >
             </q-img>
         </div>
         <q-rating readonly v-model="user.calificacion" icon-selected="star" icon="star_border" color="orange" :max="5" size="23px" />
+        <div class="row" >
+          <q-icon class="q-mr-lg" name="schedule" size="sm" />
+          <div class="">
+            <div class="ellipsis text-subtitle2">Horario de atención</div>
+            <div class="ellipsis text-subtitle2 text-grey"> {{user.hapertura && user.hcierre ? user.hapertura + ' - ' + user.hcierre : 'Libre'}} </div>
+          </div>
+        </div>
       </div>
-      <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 col-xl-7">
-        <div class="row items-start" style="width: 100%">
+      <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 col-xl-7" style="width:40%">
+        <div class="row items-start">
           <q-icon class="col-1" name="location_city" size="sm" />
           <div class="col q-ml-sm">
             <div class="ellipsis text-subtitle2">Comunidad autónoma</div>
             <div class="ellipsis text-subtitle2 text-grey"> {{user.provincia ? user.provincia.nombre : ''}} </div>
           </div>
         </div>
-        <div class="row items-start" style="width: 100%">
+        <div class="row items-start">
           <q-icon class="col-1" name="room" size="sm" />
           <div class="col q-ml-sm">
             <div class="ellipsis text-subtitle2">Dirección del local</div>
             <div class="text-subtitle2 text-grey"> {{user.ciudad ? user.ciudad.nombre + ', ' + user.direccion : ''}} </div>
           </div>
         </div>
-        <div class="row items-start" style="width: 100%">
+        <div class="row items-start">
           <q-icon class="col-1" name="phone" size="sm" />
           <div class="col q-ml-sm">
             <div class="ellipsis text-subtitle2">Teléfono de contacto</div>
             <div class="ellipsis text-subtitle2 text-grey"> {{user.telefono}} </div>
           </div>
         </div>
-      </div>
-      <div class="col-xs-5 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-        <div class="row items-start" style="width: 100%">
-          <q-icon class="col-1" name="schedule" size="sm" />
-          <div class="col q-ml-sm">
-            <div class="ellipsis text-subtitle2">Horario de atención</div>
-            <div class="ellipsis text-subtitle2 text-grey"> {{user.hapertura && user.hcierre ? user.hapertura + ' - ' + user.hcierre : 'Libre'}} </div>
+
+        <div class="col-xs-7 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+          <div class="row items-start">
+            <q-icon class="col-1" name="date_range" size="sm" />
+            <div class="col q-ml-sm">
+              <div class="ellipsis text-subtitle2">Días de atención</div>
+              <div class="text-subtitle2 text-grey"> {{dias()}} </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-xs-7 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-        <div class="row items-start" style="width: 100%">
-          <q-icon class="col-1" name="date_range" size="sm" />
-          <div class="col q-ml-sm">
-            <div class="ellipsis text-subtitle2">Días de atención</div>
-            <div class="text-subtitle2 text-grey"> {{dias()}} </div>
-          </div>
-        </div>
       </div>
     </div>
 
+    <div class="">
     <q-scroll-area
         v-if="user.images.length"
         horizontal
@@ -198,7 +200,7 @@
           <div class="text-center text-h6">Aún no tienes productos</div>
           <div class="text-center text-caption">Preciona en el botón azul para agregar un nuevo producto</div>
         </div>
-
+  </div>
         <div class="text-h6 q-ma-md text-grey-8">Conoce todos nuestros productos</div>
         <div v-if="productos.length" class="row justify-around">
           <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 row justify-center q-mt-md" v-for="(card, index) in productos" :key="index">
@@ -237,7 +239,7 @@
           <div class="text-center text-caption">Preciona en el botón azul para agregar un nuevo producto</div>
         </div>
         <div v-if="productos.length" class="row items-center justify-center q-mt-lg">
-          <q-btn no-caps rounded label="Ver más productos" color="primary" size="lg" style="width: 80%"
+          <q-btn no-caps rounded label="Ver más productos" color="primary" size="lg" style="width: 20%"
           @click="verMas()"/>
         </div>
 
@@ -316,7 +318,7 @@
                     <div class="text-h4 text-bold text-primary">€{{formatPrice(totalCarrito)}}</div>
                   </div>
                   <div class="row justify-center" style="width:100%">
-                    <q-btn :disable="carrito.length ? false : true" @click="$v.form.$reset(), comprarCarrito = true, verCarrito = false" no-caps label="Checkout" color="primary" size="lg" style="width: 90%; border-radius:15px" />
+                    <q-btn :disable="carrito.length ? false : true" @click="$v.form.$reset(), comprarCarrito = true, verCarrito = false" no-caps label="Checkout" color="primary" size="lg" style="width: 30%; border-radius:15px" />
                   </div>
                 </div>
               </div>
@@ -382,7 +384,7 @@
                     <div class="text-h4 text-bold text-blue">€{{formatPrice(totalCarrito)}}</div>
                   </div>
                   <div class="row justify-center" style="width:100%">
-                    <q-btn :disable="carrito.length ? false : true" @click="iniciarCompra()" no-caps label="Pagar ahora" color="primary" size="lg" style="width: 90%; border-radius:15px" />
+                    <q-btn :disable="carrito.length ? false : true" @click="iniciarCompra()" no-caps label="Pagar ahora" color="primary" size="lg" style="width: 40%; border-radius:15px" />
                   </div>
                 </div>
               </div>

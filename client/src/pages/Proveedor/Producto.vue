@@ -16,7 +16,7 @@
       </div>
     </q-img>
 
-      <div class="row q-pa-sm justify-around q-mt-md">
+      <div class="row q-pa-xl justify-around q-mt-md">
         <div class="col-xs-11 col-sm-11 col-md-7 col-lg-7 col-xl-7">
           <div class="text-subtitle2 text-grey-8">Nombre del producto</div>
           <q-input v-model="form.nombre" filled
@@ -115,7 +115,7 @@
       </div>
 
       <div class="row items-center justify-center q-mt-md" style="width:100%">
-        <q-btn no-caps rounded label="Guardar" color="primary" size="lg" style="width: 50%"
+        <q-btn no-caps rounded label="Guardar" color="primary" size="lg" style="width: 30%"
         @click="edit ? actualizar() : guardar()" />
       </div>
 

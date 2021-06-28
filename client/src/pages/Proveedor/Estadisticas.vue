@@ -7,7 +7,7 @@
     </q-img>
 
     <div class="q-pt-lg row justify-center">
-        <q-card class="bg-blue column justify-between" style="height: 175px; width: 80%; border-radius: 30px">
+        <q-card class="bg-blue column justify-between" style="height: 175px; width: 40%; border-radius: 30px">
           <q-card-section class="col">
           </q-card-section>
           <q-card-section>
@@ -60,7 +60,7 @@
         </div>
       </div>
       <div class="row justify-center q-mb-lg">
-        <q-btn :disable="fecha === null ? true : false" rounded class="q-pa-xs" color="primary" label="Ver estadísticas" style="width: 90%;" no-caps
+        <q-btn :disable="fecha === null ? true : false" rounded class="q-pa-xs" color="primary" label="Ver estadísticas" style="width: 25%;" no-caps
         @click="getReport()"/>
       </div>
 
@@ -98,7 +98,7 @@
             </q-card>
           </div>
           <div class="col-12 row justify-center q-mb-md">
-            <q-btn rounded color="primary" @click="ver()" size="lg" :label="verMas ? 'Ver menos productos' : 'Ver más productos'" style="width: 80%;" no-caps/>
+            <q-btn rounded color="primary" @click="ver()" size="lg" :label="verMas ? 'Ver menos productos' : 'Ver más productos'" style="width: 20%;" no-caps/>
           </div>
       </div>
       <div v-else class="text-center text-h6 q-my-lg">Aún no tienes productos vendidos</div>
