@@ -9,7 +9,7 @@
     <div class="text-h6 q-ma-lg text-grey-8">Pendientes por aprobar</div>
     <div v-if="pendientes.length">
       <div class="q-py-sm row justify-center" v-for="(card, index) in pendientes" :key="index">
-          <q-card clickable v-ripple class="column justify-between" style="height: 175px; width: 80%; border-radius: 30px; min-width: 300px"
+          <q-card clickable v-ripple class="column justify-between" style="height: 175px; width: 30%; border-radius: 30px; min-width: 300px"
           @click="selecRetiro = card, verRetiro = true">
             <q-card-section>
               <div class="row justify-around">
@@ -80,7 +80,7 @@
 
       <div v-if="retirosFilter.length">
         <div class="q-py-sm row justify-center" v-for="(card, index) in retirosFilter" :key="index">
-          <q-card clickable v-ripple class="column justify-between" style="height: 175px; width: 80%; border-radius: 30px; min-width: 300px"
+          <q-card clickable v-ripple class="column justify-between" style="height: 175px; width: 30%; border-radius: 30px; min-width: 300px"
           @click="selecRetiro = card, verRetiro = true">
             <q-card-section>
               <div class="row justify-around">
@@ -133,7 +133,7 @@
               </div>
             </div>
             <div v-if="selecRetiro.status === 'Pendiente'" class="row justify-center items-center q-mt-md">
-              <q-btn color="primary" style="width: 80%;" label="Aprobar" no-caps rounded
+              <q-btn color="primary" style="width: 30%;" label="Aprobar" no-caps rounded
               @click="aprobar()"/>
             </div>
           </q-card-section>

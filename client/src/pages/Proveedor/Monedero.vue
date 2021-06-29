@@ -26,7 +26,7 @@
       <div class="text-h6 q-ma-lg text-grey-8">Ultimas solicitudes</div>
       <div v-if="ultimas.length">
         <div class="q-py-sm row justify-center" v-for="(card, index) in ultimas" :key="index">
-          <q-card clickable v-ripple class="column justify-between" style="height: 175px; width: 80%; border-radius: 30px; min-width: 300px"
+          <q-card clickable v-ripple class="column justify-between" style="height: 175px; width: 40%; border-radius: 30px; min-width: 300px"
           @click="selecRetiro = card, verRetiro = true">
             <q-card-section>
               <div class="row justify-around">
@@ -53,7 +53,7 @@
           </q-card>
         </div>
         <div class="row justify-center q-mb-lg q-my-sm">
-          <q-btn rounded class="q-pa-xs" color="primary" :label="noMas ? 'Ver más' : 'Ver menos'" style="width: 90%;" no-caps
+          <q-btn rounded class="q-pa-xs" color="primary" :label="noMas ? 'Ver más' : 'Ver menos'" style="width: 20%;" no-caps
           @click="verMas()"/>
         </div>
       </div>
@@ -98,7 +98,7 @@
 
       <div v-if="retirosFilter.length">
         <div class="q-py-sm row justify-center" v-for="(card, index) in retirosFilter" :key="index">
-          <q-card clickable v-ripple class="column justify-between" style="height: 175px; width: 80%; border-radius: 30px; min-width: 300px"
+          <q-card clickable v-ripple class="column justify-between" style="height: 175px; width: 30%; border-radius: 30px; min-width: 300px"
           @click="selecRetiro = card, verRetiro = true">
             <q-card-section>
               <div class="row justify-around">
@@ -128,7 +128,7 @@
       <div v-else class="text-center text-h6 q-my-lg">No tienes solicitudes</div>
 
       <q-dialog v-model="solicitar">
-        <q-card style="width: 100%; border-radius: 30px">
+        <q-card style="width:30%; border-radius: 30px">
           <q-card-section>
             <div class="text-h6 text-center">Solicitud de retiro</div>
           </q-card-section>
@@ -164,7 +164,7 @@
 
           <q-card-section class="q-pt-xl">
             <div class="row justify-center">
-              <q-img src="nova_telde-03.png" style="width:100%" >
+              <q-img src="nova_telde-03.png" style="width:80%" >
               </q-img>
             </div>
           </q-card-section>
