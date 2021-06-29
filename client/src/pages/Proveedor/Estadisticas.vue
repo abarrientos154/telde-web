@@ -7,7 +7,7 @@
     </q-img>
 
     <div class="q-pt-lg row justify-center">
-        <q-card class="bg-blue column justify-between" style="height: 175px; width: 40%; border-radius: 30px">
+        <q-card class="bg-blue column justify-between" style="height: 175px; width: 30%; border-radius: 30px">
           <q-card-section class="col">
           </q-card-section>
           <q-card-section>
@@ -98,7 +98,7 @@
             </q-card>
           </div>
           <div class="col-12 row justify-center q-mb-md">
-            <q-btn rounded color="primary" @click="ver()" size="lg" :label="verMas ? 'Ver menos productos' : 'Ver más productos'" style="width: 20%;" no-caps/>
+            <q-btn rounded color="primary" @click="ver()" size="lg" :label="verMas ? 'Ver menos productos' : 'Ver más productos'" style="width: 2 0%;" no-caps/>
           </div>
       </div>
       <div v-else class="text-center text-h6 q-my-lg">Aún no tienes productos vendidos</div>

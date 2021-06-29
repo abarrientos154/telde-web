@@ -30,7 +30,7 @@
 
       <div class="text-h6 q-ma-lg text-grey-8">Ultimas tiendas registradas</div>
       <div v-if="tiendas.length" class="row q-pa-sm">
-        <div v-for="(item, index) in tiendas"  :key="index" class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 q-mb-md q-px-sm">
+        <div v-for="(item, index) in tiendas"  :key="index" class="q-mb-md q-px-sm">
           <q-card bordered style="width: 100%; border-radius:25px;">
             <q-card-section horizontal>
               <q-card-section>
@@ -129,7 +129,7 @@
         </div>
       </div>
       <div class="row justify-center q-mb-lg">
-        <q-btn :disable="fecha === null ? true : false" rounded class="q-pa-xs" color="primary" label="Ver estadística" style="width: 90%;" no-caps
+        <q-btn :disable="fecha === null ? true : false" rounded class="q-pa-xs" color="primary" label="Ver estadística" style="width: 20%;" no-caps
         @click="getReport()"/>
       </div>
 
@@ -180,7 +180,7 @@
       </q-scroll-area>
 
     <q-dialog v-model="estado">
-        <q-card style="width: 300px; border-radius:25px;">
+        <q-card style="width: 400px; border-radius:25px;">
           <q-card-section>
             <div class="text-h6 text-center">Administración Usuarios</div>
           </q-card-section>
@@ -250,7 +250,7 @@
             </template>
           </q-input>
           <div class="row justify-center q-mt-md">
-            <q-btn rounded class="q-pa-xs" color="primary" label="Guardar" style="width: 75%;" @click="actualizarP()" no-caps/>
+            <q-btn rounded class="q-pa-xs" color="primary" label="Guardar" style="width: 35%;" @click="actualizarP()" no-caps/>
           </div>
         </q-card-section>
       </q-card>

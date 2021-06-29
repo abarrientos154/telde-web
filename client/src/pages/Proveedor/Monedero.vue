@@ -7,7 +7,7 @@
     </q-img>
 
       <div class="q-pt-lg row justify-center">
-        <q-card class="bg-blue column justify-between" style="height: 175px; width: 80%; border-radius: 30px">
+        <q-card class="bg-blue column justify-between" style="height: 175px; width: 30%; border-radius: 30px">
           <q-card-section class="col">
           </q-card-section>
           <q-card-section>

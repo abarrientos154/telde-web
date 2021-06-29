@@ -46,7 +46,7 @@
         </div>
       </div>
       <div class="row justify-center q-mb-lg">
-        <q-btn :disable="fechaVentas === null ? true : false" rounded class="q-pa-xs" color="primary" label="Ver estadística" style="width: 90%;" no-caps
+        <q-btn :disable="fechaVentas === null ? true : false" rounded class="q-pa-xs" color="primary" label="Ver estadística" style="width: 20%;" no-caps
         @click="getReportVentas()"/>
       </div>
 
@@ -100,7 +100,7 @@
         </div>
       </div>
       <div class="row justify-center q-mb-lg">
-        <q-btn :disable="fechaMembresias === null ? true : false" rounded class="q-pa-xs" color="primary" label="Ver estadística" style="width: 90%;" no-caps
+        <q-btn :disable="fechaMembresias === null ? true : false" rounded class="q-pa-xs" color="primary" label="Ver estadística" style="width: 20%;" no-caps
         @click="getReportMembresias()"/>
       </div>
 
@@ -154,7 +154,7 @@
         </div>
       </div>
       <div class="row justify-center q-mb-lg">
-        <q-btn :disable="fechaRetiros === null ? true : false" rounded class="q-pa-xs" color="primary" label="Ver estadística" style="width: 90%;" no-caps
+        <q-btn :disable="fechaRetiros === null ? true : false" rounded class="q-pa-xs" color="primary" label="Ver estadística" style="width: 20%;" no-caps
         @click="getReportRetiros()"/>
       </div>
 

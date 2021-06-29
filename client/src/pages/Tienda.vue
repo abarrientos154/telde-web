@@ -402,7 +402,7 @@
                 <div class="text-center text-h6 text-bold">Compra exitosa</div>
                 <div class="text-center text-subtitle1 q-mx-md text-grey-8">Tu compra fue exitosa, recibirás un correo electrónico con los detalles de tu compra</div>
                 <div class="row items-center justify-center q-mt-lg" style="width:100%">
-                  <q-btn no-caps label="Ir a Nova Telde" color="primary" size="lg" style="border-radius: 25px; width: 80%"
+                  <q-btn no-caps label="Ir a Nova Telde" color="primary" size="lg" style="border-radius: 25px; width: 40%"
                   @click="compraExitosa = false" />
                 </div>
               </div>

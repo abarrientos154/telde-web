@@ -472,6 +472,8 @@ export default {
           this.$api.post('calificar_tienda', this.comentario).then(res => {
             if (res) {
               this.cambiarStatus(this.pedidoSelec._id)
+              this.comentario.rating = 0
+              this.comentario.comentario = null
             }
           })
         }

@@ -8,7 +8,7 @@
 
     <div class="text-h6 q-ma-lg text-grey-8">Ultimas tiendas registradas</div>
     <div v-if="ultimas.length" class="row q-pa-sm">
-      <div v-for="(item, index) in ultimas"  :key="index" class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 q-mb-md q-px-sm">
+      <div v-for="(item, index) in ultimas"  :key="index" class="q-mb-md q-px-sm">
         <q-card bordered style="width: 100%; border-radius:25px;">
           <q-card-section horizontal>
             <q-card-section>
@@ -34,7 +34,7 @@
 
     <div class="text-h6 q-ma-lg text-grey-8">Tiendas que vencerán su membresia</div>
     <div v-if="tiendas.length" class="row q-pa-sm">
-      <div v-for="(item, index) in tiendas"  :key="index" class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 q-mb-md q-px-sm">
+      <div v-for="(item, index) in tiendas"  :key="index" class="q-mb-md q-px-sm">
         <q-card bordered style="width: 100%; border-radius:25px;">
           <q-card-section horizontal>
             <q-card-section>
@@ -60,7 +60,7 @@
 
     <div class="text-h6 q-ma-lg text-grey-8">Usuarios clientes</div>
     <div v-if="clientes.length" class="row q-pa-sm">
-      <div v-for="(item, index) in clientes"  :key="index" class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 q-mb-md q-px-sm">
+      <div v-for="(item, index) in clientes"  :key="index" class="q-mb-md q-px-sm">
         <q-card bordered style="width: 100%; border-radius:25px;">
           <q-card-section horizontal>
             <q-card-section>
@@ -83,7 +83,7 @@
     </div>
 
     <q-dialog v-model="estado">
-      <q-card style="width: 300px; border-radius:25px;">
+      <q-card style="width: 400px; border-radius:25px;">
         <q-card-section>
           <div class="text-h6 text-center">Administración Usuarios</div>
         </q-card-section>
