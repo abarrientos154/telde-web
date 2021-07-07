@@ -32,7 +32,7 @@
           </div>
           <div class="row justify-center q-mt-md">
             <div class="col-xs-11 col-sm-11 col-md-7 col-lg-7 col-xl-7">
-              <div class="text-subtitle2 text-grey-8">Nombres</div>
+              <div class="text-subtitle2 text-grey-8">Nombre</div>
               <q-input v-model="form.name" filled
                 error-message="Requerido" :error="$v.form.name.$error" @blur="$v.form.name.$touch()"
               />
@@ -103,7 +103,7 @@
               <q-separator />
             </div>
             <div class="col-xs-11 col-sm-11 col-md-7 col-lg-7 col-xl-7">
-              <div class="text-subtitle2 text-grey-8">Provincia</div>
+              <div class="text-subtitle2 text-grey-8">Ciudad</div>
               <q-select @input="ciudadesOpt(direccion.provincia.id)" filled v-model="direccion.provincia" :options="optionsProvincias" map-options option-label="nombre"
                 :error="$v.direccion.provincia.$error" @blur="$v.direccion.provincia.$touch()" >
                   <template v-slot:option="scope">
@@ -119,7 +119,7 @@
               </q-select>
             </div>
             <div class="col-xs-11 col-sm-11 col-md-7 col-lg-7 col-xl-7 q-mb-sm">
-              <div class="text-subtitle2 text-grey-8">Ciudad</div>
+              <div class="text-subtitle2 text-grey-8">Localidad</div>
               <q-select :disable="ciudadesFilter.length ? false : true" filled v-model="direccion.ciudad" :options="optionsCiudad" map-options option-label="nombre" use-input @filter="filterFn"
                 :error="$v.direccion.ciudad.$error" @blur="$v.direccion.ciudad.$touch()" >
                   <template v-slot:option="scope">
@@ -250,6 +250,7 @@ export default {
         this.$q.loading.show({
           message: 'Registrando datos'
         })
+        this.direccion.principal = true
         var formData = new FormData()
         formData.append('perfil', this.perfil)
         formData.append('dat', JSON.stringify(this.form))
