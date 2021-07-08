@@ -292,7 +292,6 @@ export default {
       }
     },
     filterCategoria (btn, text) {
-      console.log(btn, 'boton')
       if (text === 'cat') {
         this.selecCategoria = btn
         this.selecSubCategoria = ''
