@@ -263,7 +263,7 @@ export default {
         }
       })
     },
-   async recuperar () {
+    async recuperar () {
       if (this.email) {
         this.simulateProgress()
         // this.loading2 = true
