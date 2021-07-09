@@ -22,7 +22,7 @@
                   </template>
                 </q-input>
               </div>
-              <div class="text-center text-body2 text-grey-7" @click="cambio = true">¿Olvidaste tu contraseña?</div>
+              <div class="text-center text-body2 text-grey-7 cursor-pointer q-mt-md" @click="cambio = true">¿Olvidaste tu contraseña?</div>
 
               <div class="row justify-center q-mt-lg">
                 <q-btn rounded no-caps color="primary" style="width:200px" size="18px" label="Iniciar sesión" :loading="loading" @click="onSubmit()">
