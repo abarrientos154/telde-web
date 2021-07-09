@@ -4,40 +4,6 @@
     @click="!principal.nuevo ? irRuta(principal.ruta) : ''" />
     <div class="q-pa-xl">
     <div class="text-h5 q-my-md text-center text-grey-8 text-bold">¡Busca lo que necesites!</div>
-    <div class="column items-center justify-center">
-      <div class="text-h6 q-mx-md text-grey-8">Ubicacion</div>
-      <div class="" style="width:300px">
-        <div class="text-subtitle2 text-grey-8">Ciudad</div>
-        <q-select @input="ciudadesOpt(direccion.provincia.id)" filled v-model="direccion.provincia" :options="optionsProvincias" map-options option-label="nombre">
-            <template v-slot:option="scope">
-              <q-item
-                v-bind="scope.itemProps"
-                v-on="scope.itemEvents"
-              >
-                <q-item-section>
-                  <q-item-label v-html="scope.opt.nombre" />
-                </q-item-section>
-              </q-item>
-            </template>
-        </q-select>
-      </div>
-        <div class="" style="width:300px">
-          <div class="text-subtitle2 text-grey-8">Localidad</div>
-          <q-select :disable="ciudadesFilter.length ? false : true" filled v-model="direccion.ciudad" :options="optionsCiudad" map-options option-label="nombre" use-input @filter="filterFn">
-              <template v-slot:option="scope">
-                <q-item
-                  v-bind="scope.itemProps"
-                  v-on="scope.itemEvents"
-                >
-                  <q-item-section>
-                    <q-item-label v-html="scope.opt.nombre" />
-                    <q-item-label caption>{{ scope.opt.cp }}</q-item-label>
-                  </q-item-section>
-                </q-item>
-              </template>
-          </q-select>
-        </div>
-    </div>
       <div class="column items-center justify-center">
         <div class="text-h6 q-mx-md text-grey-8">Categorias</div>
       </div>
@@ -218,14 +184,10 @@ export default {
       selecSubCategoria: '',
       producto: {},
       principal: {},
-      direccion: {},
       publicidad1: [],
       publicidad2: [],
       productos: [],
       allTiendas: [],
-      optionsProvincias: [],
-      ciudadesFilter: [],
-      optionsCiudad: [],
       tiendas: [],
       masTiendas: [],
       resultado: [],
@@ -244,7 +206,6 @@ export default {
     this.getTiendas()
     this.getPublicidad()
     this.getProductos()
-    this.getProvincia()
     const value = localStorage.getItem('TELDE_SESSION_INFO')
     if (value) {
       this.getInfo()
@@ -254,8 +215,7 @@ export default {
   },
   computed: {
     mostrarBtn () {
-      console.log(this.selecCategoria, this.direccion.provincia, this.direccion.ciudad, 'ciudad')
-      if (!this.direccion.provincia || !this.direccion.ciudad || this.selecCategoria === '') {
+      if (this.selecCategoria === '') {
         return true
       } else {
         return false
@@ -271,13 +231,6 @@ export default {
           if (this.rol === 2) {
             this.getFavoritos()
           }
-        }
-      })
-    },
-    getProvincia () {
-      this.$api.get('provincias').then(res => {
-        if (res) {
-          this.optionsProvincias = res
         }
       })
     },
@@ -339,7 +292,6 @@ export default {
       }
     },
     filterCategoria (btn, text) {
-      console.log(btn, 'boton')
       if (text === 'cat') {
         this.selecCategoria = btn
         this.selecSubCategoria = ''
@@ -355,56 +307,19 @@ export default {
     filterTiendas () {
       if (this.selecCategoria === 'Comida') {
         if (this.selecSubCategoria !== '') {
-          this.$router.push('/tiendas/' + this.selecCategoria + '/' + this.selecSubCategoria + '?ciudad_id=' + this.direccion.ciudad._id)
+          this.$router.push('/tiendas/' + this.selecCategoria + '/' + this.selecSubCategoria)
         } else {
-          this.$router.push('/tiendas/' + this.selecCategoria + '?ciudad_id=' + this.direccion.ciudad._id)
+          this.$router.push('/tiendas/' + this.selecCategoria)
         }
       } else {
-        this.$router.push('/tiendas/' + this.selecCategoria + '?ciudad_id=' + this.direccion.ciudad._id)
+        this.$router.push('/tiendas/' + this.selecCategoria)
       }
     },
-    filterUbication (datos) {
-      console.log(datos, 'lo que se busca')
-      this.$api.get('proveedores/' + datos._id).then(res => {
-        this.resultado = res
-        this.tiendas = this.resultado
-        console.log(this.resultado, 'resultado')
-      })
-    },
-
     irRuta (ruta) {
       openURL(ruta)
     },
     irTienda (id) {
       this.$router.push('/tienda/' + id)
-    },
-    ciudadesOpt (id) {
-      this.$q.loading.show({
-        message: 'Buscando localidades'
-      })
-      if (this.direccion.ciudad) {
-        this.direccion.ciudad = null
-      }
-      this.$api.get('ciudades/' + id).then(res => {
-        if (res) {
-          this.ciudadesFilter = res
-          this.optionsCiudad = res
-          this.$q.loading.hide()
-        }
-      })
-    },
-    filterFn (val, update) {
-      if (val === '') {
-        update(() => {
-          this.optionsCiudad = this.ciudadesFilter
-        })
-        return
-      }
-
-      update(() => {
-        const needle = val.toLowerCase()
-        this.optionsCiudad = this.ciudadesFilter.filter(v => v.nombre.toLowerCase().indexOf(needle) > -1)
-      })
     }
   }
 }
