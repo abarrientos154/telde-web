@@ -1,8 +1,8 @@
 {
-  "name": "Telde",
+  "name": "Nova Telde",
   "version": "1.0.0",
   "description": "Sitio de compra Telde",
-  "productName": "Telde",
+  "productName": "Nova Telde",
   "author": "example <example@example.com>",
   "private": true,
   "scripts": {
