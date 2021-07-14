@@ -61,7 +61,7 @@
     </div>
     <div v-else class="text-center text-h6 q-my-lg">No existen tiendas creadas</div>
     <div v-if="verTiendas && tiendas.length" class="row justify-center q-ma-md">
-      <q-btn rounded no-caps color="primary" @click="verMas()" label="Ver más tiendas" size="lg" style="width: 20%;" />
+      <q-btn rounded no-caps color="primary" @click="verMas()" label="Ver más tiendas" size="lg" style="width: 200px;" />
     </div>
   </div>
 </template>
@@ -72,6 +72,7 @@ export default {
   data () {
     return {
       verTiendas: true,
+      login: true,
       baseuTiendas: '',
       selecCategoria: '',
       selecSubCategoria: '',
@@ -85,8 +86,14 @@ export default {
   },
   mounted () {
     this.baseuTiendas = env.apiUrl + '/perfil_img/'
-    this.getTiendas()
-    this.getFavoritos()
+    const value = localStorage.getItem('TELDE_SESSION_INFO')
+    if (value) {
+      this.getTiendas()
+      this.getFavoritos()
+    } else {
+      this.login = false
+      this.getTiendas()
+    }
   },
   computed: {
     mostrarBtn () {
@@ -99,24 +106,45 @@ export default {
   },
   methods: {
     getTiendas () {
-      this.$api.get('proveedores').then(res => {
-        if (res) {
-          this.allTiendas = res.map(v => {
-            return {
-              ...v,
-              ciudad_id: v.ciudad._id
+      if (this.login) {
+        this.$api.get('proveedores').then(res => {
+          if (res) {
+            this.allTiendas = res.map(v => {
+              return {
+                ...v,
+                ciudad_id: v.ciudad._id
+              }
+            })
+            this.tiendas = this.allTiendas.slice(0, 6)
+            if (this.$route.params.cat) {
+              this.filterCategoria(this.$route.params.cat, 'cat')
+              if (this.$route.params.subcat) {
+                this.filterCategoria(this.$route.params.subcat, 'sub')
+              }
+              this.filterTiendas()
             }
-          })
-          this.tiendas = this.allTiendas.slice(0, 6)
-          if (this.$route.params.cat) {
-            this.filterCategoria(this.$route.params.cat, 'cat')
-            if (this.$route.params.subcat) {
-              this.filterCategoria(this.$route.params.subcat, 'sub')
-            }
-            this.filterTiendas()
           }
-        }
-      })
+        })
+      } else {
+        this.$api.get('proveedores_no_logueo').then(res => {
+          if (res) {
+            this.allTiendas = res.map(v => {
+              return {
+                ...v,
+                ciudad_id: v.ciudad._id
+              }
+            })
+            this.tiendas = this.allTiendas.slice(0, 6)
+            if (this.$route.params.cat) {
+              this.filterCategoria(this.$route.params.cat, 'cat')
+              if (this.$route.params.subcat) {
+                this.filterCategoria(this.$route.params.subcat, 'sub')
+              }
+              this.filterTiendas()
+            }
+          }
+        })
+      }
     },
     getFavoritos () {
       this.$api.get('favoritos').then(res => {

@@ -239,7 +239,7 @@
           <div class="text-center text-caption">Preciona en el botón azul para agregar un nuevo producto</div>
         </div>
         <div v-if="productos.length" class="row items-center justify-center q-mt-lg">
-          <q-btn no-caps rounded label="Ver más productos" color="primary" size="lg" style="width: 20%"
+          <q-btn no-caps rounded label="Ver más productos" color="primary" size="lg" style="width: 250px"
           @click="verMas()"/>
         </div>
 
@@ -461,6 +461,7 @@ export default {
       compraExitosa: false,
       compraFallo: false,
       noLogin: false,
+      login: true,
       rol: 0,
       id_tienda: '',
       baseuProducto: '',
@@ -515,13 +516,19 @@ export default {
   mounted () {
     this.baseuProducto = env.apiUrl + '/producto_files/'
     this.baseuImgsTienda = env.apiUrl + '/tienda_files/'
+    const value = localStorage.getItem('TELDE_SESSION_INFO')
+    if (value) {
+      this.getInfo()
+    } else {
+      this.login = false
+    }
     if (this.$route.params.proveedor_id) {
       this.id_tienda = this.$route.params.proveedor_id
       this.baseuPerfil = env.apiUrl + '/perfil_img/' + this.id_tienda
       this.baseuPortada = env.apiUrl + '/perfil_img/portada' + this.id_tienda
       this.getProductosByProveedor(this.id_tienda)
       this.getInfoById(this.id_tienda)
-      this.getComentarios()
+      this.getComentarios(this.id_tienda)
     }
     if (this.$route.params.result) {
       if (this.$route.params.result === '1') {
@@ -529,10 +536,6 @@ export default {
       } else {
         this.compraFallo = true
       }
-    }
-    const value = localStorage.getItem('TELDE_SESSION_INFO')
-    if (value) {
-      this.getInfo()
     }
   },
   methods: {
@@ -582,7 +585,7 @@ export default {
       this.$api.post('user_by_id/' + id).then(res => {
         if (res) {
           this.user = res
-          console.log(this.user)
+          console.log('user', this.user)
           if (res.status === 1) {
             this.logout()
             this.$router.push('/login')
@@ -607,8 +610,8 @@ export default {
         }
       })
     },
-    getComentarios () {
-      this.$api.get('comentarios').then(res => {
+    getComentarios (id) {
+      this.$api.get('comentarios/' + id).then(res => {
         if (res) {
           this.comentarios = res
         }

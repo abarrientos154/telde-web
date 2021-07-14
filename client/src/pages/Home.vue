@@ -2,6 +2,9 @@
   <div>
     <img :src="!principal.nuevo ? baseuPublicidad + principal.fileName : principal.fileName" style="height: 400px; width: 100%;"
     @click="!principal.nuevo ? irRuta(principal.ruta) : ''" />
+    <div v-if="!login" class="absolute-top-right q-pa-md">
+      <q-btn no-caps rounded color="primary" label="Iniciar sesión" to="/login" />
+    </div>
     <div class="q-pa-xl">
     <div class="text-h5 q-my-md text-center text-grey-8 text-bold">¡Busca lo que necesites!</div>
       <div class="column items-center justify-center">
@@ -70,11 +73,13 @@
       </q-scroll-area>
       <div v-else class="text-center text-h6 q-my-lg">No hay ninguna tienda</div>
 
-        <div class="row items-center justify-center q-py-md q-px-md q-gutter-md">
-          <q-card style="border-radius: 24px; width:450px" clickable v-ripple v-for="(card, index) in publicidad1" :key="index">
-            <img :src="!card.nuevo ? baseuPublicidad + card.fileName : card.fileName"
-            style="height: 320px; width: 100%" @click="!card.nuevo ? irRuta(card.ruta) : ''"/>
-          </q-card>
+        <div class="row items-center justify-around q-py-md">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 q-pa-xs" v-for="(card, index) in publicidad1" :key="index">
+            <q-card style="border-radius: 24px; width:100%" clickable v-ripple>
+              <img :src="!card.nuevo ? baseuPublicidad + card.fileName : card.fileName"
+              style="height: 320px; width: 100%" @click="!card.nuevo ? irRuta(card.ruta) : ''"/>
+            </q-card>
+          </div>
         </div>
     <div class="text-h6 q-my-md text-center text-grey-8">Nuestros nuevos productos</div>
     <q-scroll-area
@@ -112,11 +117,13 @@
       </q-scroll-area>
       <div v-else class="text-center text-h6 q-my-lg">No hay ningún producto</div>
 
-        <div class="row items-center justify-center q-py-md q-px-md q-gutter-md">
-          <q-card style="border-radius: 24px; width:450px" clickable v-ripple v-for="(card, index) in publicidad2" :key="index">
-            <img :src="!card.nuevo ? baseuPublicidad + card.fileName : card.fileName"
-            style="height: 320px; width: 100%" @click="!card.nuevo ? irRuta(card.ruta) : ''"/>
-          </q-card>
+        <div class="row items-center justify-around q-py-md">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 q-pa-xs" v-for="(card, index) in publicidad2" :key="index">
+            <q-card style="border-radius: 24px; width:100%" clickable v-ripple>
+              <img :src="!card.nuevo ? baseuPublicidad + card.fileName : card.fileName"
+              style="height: 320px; width: 100%" @click="!card.nuevo ? irRuta(card.ruta) : ''"/>
+            </q-card>
+          </div>
         </div>
 
       <div class="text-h6 q-my-md text-center text-grey-8">Más tiendas</div>
@@ -150,7 +157,7 @@
       </div>
       <div v-else class="text-center text-h6 q-my-lg">No hay ninguna tienda</div>
       <div v-if="masTiendas.length" class="row items-center justify-center q-mt-lg">
-        <q-btn no-caps rounded label="Ver más tiendas" color="primary" size="lg" style="width: 20%"
+        <q-btn no-caps rounded label="Ver más tiendas" color="primary" size="lg" style="width: 200px"
         @click="$router.push('/tiendas')"/>
       </div>
 
@@ -203,14 +210,16 @@ export default {
     this.baseuPublicidad = env.apiUrl + '/publicidad_img/'
     this.baseuProducto = env.apiUrl + '/producto_files/'
     this.baseuTiendas = env.apiUrl + '/perfil_img/'
-    this.getTiendas()
     this.getPublicidad()
-    this.getProductos()
     const value = localStorage.getItem('TELDE_SESSION_INFO')
     if (value) {
       this.getInfo()
+      this.getTiendas()
+      this.getProductos()
     } else {
       this.login = false
+      this.getTiendas()
+      this.getProductos()
     }
   },
   computed: {
@@ -235,21 +244,40 @@ export default {
       })
     },
     getTiendas () {
-      this.$api.get('proveedores').then(res => {
-        if (res) {
-          this.allTiendas = res
-          this.tiendas = this.allTiendas
-          this.tiendas.sort(() => Math.random() - 0.5)
-          this.masTiendas = this.allTiendas.slice(0, 4)
-        }
-      })
+      if (this.login) {
+        this.$api.get('proveedores').then(res => {
+          if (res) {
+            this.allTiendas = res
+            this.tiendas = this.allTiendas
+            this.tiendas.sort(() => Math.random() - 0.5)
+            this.masTiendas = this.allTiendas.slice(0, 4)
+          }
+        })
+      } else {
+        this.$api.get('proveedores_no_logueo').then(res => {
+          if (res) {
+            this.allTiendas = res
+            this.tiendas = this.allTiendas
+            this.tiendas.sort(() => Math.random() - 0.5)
+            this.masTiendas = this.allTiendas.slice(0, 4)
+          }
+        })
+      }
     },
     getProductos () {
-      this.$api.get('all_productos').then(res => {
-        if (res) {
-          this.productos = res.reverse().slice(0, 20)
-        }
-      })
+      if (this.login) {
+        this.$api.get('all_productos').then(res => {
+          if (res) {
+            this.productos = res.reverse().slice(0, 20)
+          }
+        })
+      } else {
+        this.$api.get('all_productos_no_logueo').then(res => {
+          if (res) {
+            this.productos = res.reverse().slice(0, 20)
+          }
+        })
+      }
     },
     getPublicidad () {
       this.$api.get('publicidad').then(res => {
