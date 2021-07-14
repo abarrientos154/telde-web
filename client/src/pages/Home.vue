@@ -244,40 +244,21 @@ export default {
       })
     },
     getTiendas () {
-      if (this.login) {
-        this.$api.get('proveedores').then(res => {
-          if (res) {
-            this.allTiendas = res
-            this.tiendas = this.allTiendas
-            this.tiendas.sort(() => Math.random() - 0.5)
-            this.masTiendas = this.allTiendas.slice(0, 4)
-          }
-        })
-      } else {
-        this.$api.get('proveedores_no_logueo').then(res => {
-          if (res) {
-            this.allTiendas = res
-            this.tiendas = this.allTiendas
-            this.tiendas.sort(() => Math.random() - 0.5)
-            this.masTiendas = this.allTiendas.slice(0, 4)
-          }
-        })
-      }
+      this.$api.get(this.login ? 'proveedores' : 'proveedores_no_logueo').then(res => {
+        if (res) {
+          this.allTiendas = res
+          this.tiendas = this.allTiendas
+          this.tiendas.sort(() => Math.random() - 0.5)
+          this.masTiendas = this.allTiendas.slice(0, 4)
+        }
+      })
     },
     getProductos () {
-      if (this.login) {
-        this.$api.get('all_productos').then(res => {
-          if (res) {
-            this.productos = res.reverse().slice(0, 20)
-          }
-        })
-      } else {
-        this.$api.get('all_productos_no_logueo').then(res => {
-          if (res) {
-            this.productos = res.reverse().slice(0, 20)
-          }
-        })
-      }
+      this.$api.get(this.login ? 'all_productos' : 'all_productos_no_logueo').then(res => {
+        if (res) {
+          this.productos = res.reverse().slice(0, 20)
+        }
+      })
     },
     getPublicidad () {
       this.$api.get('publicidad').then(res => {

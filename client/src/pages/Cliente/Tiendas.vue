@@ -106,45 +106,24 @@ export default {
   },
   methods: {
     getTiendas () {
-      if (this.login) {
-        this.$api.get('proveedores').then(res => {
-          if (res) {
-            this.allTiendas = res.map(v => {
-              return {
-                ...v,
-                ciudad_id: v.ciudad._id
-              }
-            })
-            this.tiendas = this.allTiendas.slice(0, 6)
-            if (this.$route.params.cat) {
-              this.filterCategoria(this.$route.params.cat, 'cat')
-              if (this.$route.params.subcat) {
-                this.filterCategoria(this.$route.params.subcat, 'sub')
-              }
-              this.filterTiendas()
+      this.$api.get(this.login ? 'proveedores' : 'proveedores_no_logueo').then(res => {
+        if (res) {
+          this.allTiendas = res.map(v => {
+            return {
+              ...v,
+              ciudad_id: v.ciudad._id
             }
-          }
-        })
-      } else {
-        this.$api.get('proveedores_no_logueo').then(res => {
-          if (res) {
-            this.allTiendas = res.map(v => {
-              return {
-                ...v,
-                ciudad_id: v.ciudad._id
-              }
-            })
-            this.tiendas = this.allTiendas.slice(0, 6)
-            if (this.$route.params.cat) {
-              this.filterCategoria(this.$route.params.cat, 'cat')
-              if (this.$route.params.subcat) {
-                this.filterCategoria(this.$route.params.subcat, 'sub')
-              }
-              this.filterTiendas()
+          })
+          this.tiendas = this.allTiendas.slice(0, 6)
+          if (this.$route.params.cat) {
+            this.filterCategoria(this.$route.params.cat, 'cat')
+            if (this.$route.params.subcat) {
+              this.filterCategoria(this.$route.params.subcat, 'sub')
             }
+            this.filterTiendas()
           }
-        })
-      }
+        }
+      })
     },
     getFavoritos () {
       this.$api.get('favoritos').then(res => {
