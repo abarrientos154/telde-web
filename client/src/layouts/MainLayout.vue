@@ -1,5 +1,27 @@
 <template>
   <q-layout view="hHh Lpr lFf">
+    <q-header elevated>
+        <q-toolbar class="row justify-between">
+          <div>
+            <q-img src="logo_nova_telde.png" style="width:190px; height:70px" />
+          </div>
+
+          <div v-if="rol !== 1" class="row justify-around items-center q-gutter-sm" >
+          <div><q-btn :label="rol === 3 ? 'Tienda' : 'Home'" color="white" flat stack dense no-caps size="md" @click="rol === 3 ? $router.push('/tienda/'+user_id) : $router.push('/inicio')" /></div>
+          <div><q-btn :label="rol === 3 ? 'Monedero' : 'Tiendas'" color="white" flat stack dense no-caps size="md" @click="rol === 3 ? $router.push('/monedero/') : $router.push('/tiendas')" /></div>
+          <div><q-btn :label="rol === 3 ? 'Estadísticas' : 'Favoritos'" color="white" flat stack dense no-caps size="md" @click="rol === 2 ? $router.push('/tiendas_favoritas') : $router.push('/estadisticas')" /></div>
+          <div><q-btn label="Pedidos" color="white" flat stack dense no-caps size="md" @click="rol === 3 ? $router.push('/mis_pedidos_tienda') : $router.push('/mis_pedidos')" /></div>
+          <div><q-btn label="Salir" color="white" flat stack dense no-caps size="md" @click="cerrarSesion()" /></div>
+        </div>
+        <div v-else class="row justify-around items-center q-gutter-sm" >
+          <div><q-btn icon="home" label="Home" color="white" flat stack dense no-caps size="md" @click="$router.push('/administrador')" /></div>
+          <div><q-btn icon="groups" label="Usuarios" color="white" flat stack dense no-caps size="md" @click="$router.push('/usuarios')" /></div>
+          <div><q-btn icon="monetization_on" label="Retiros" color="white" flat stack dense no-caps size="md" @click="$router.push('/retiros')" /></div>
+          <div><q-btn icon="description" label="Estadísticas" color="white" flat stack dense no-caps size="md" @click="$router.push('/reportes')" /></div>
+          <div><q-btn icon="logout" label="Salir" color="white" flat stack dense no-caps size="md" @click="cerrarSesion()" /></div>
+        </div>
+        </q-toolbar>
+      </q-header>
 
     <q-page-container class="q-mb-md">
       <router-view />
