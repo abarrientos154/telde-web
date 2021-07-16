@@ -25,7 +25,6 @@
 
           <div v-else class="row justify-around items-center q-gutter-md">
             <div><q-btn label="Inicio" color="white" flat dense no-caps size="lg" @click="$router.push('/inicio')" /></div>
-            <div><q-btn label="Nosotros" color="white" flat dense no-caps size="lg"/></div>
             <div><q-btn label="Iniciar sesión" color="white" flat dense no-caps size="lg" @click="$router.push('/login')" /></div>
           </div>
         </q-toolbar>
