@@ -5,7 +5,7 @@
     <div v-if="!login" class="absolute-top-right q-pa-md">
       <q-btn no-caps rounded color="primary" label="Iniciar sesión" to="/login" />
     </div>
-    <div class="q-pa-xl">
+    <div :class="web ? 'q-pa-xl' : 'q-pa-sm'">
     <div class="text-h5 q-my-md text-center text-grey-8 text-bold">¡Busca lo que necesites!</div>
       <div class="column items-center justify-center">
         <div class="text-h6 q-mx-md text-grey-8">Categorias</div>
@@ -29,7 +29,7 @@
 
     </div>
     <div class="q-my-md row justify-center">
-      <q-btn :disable="mostrarBtn"  style="width:20%" rounded no-caps color="primary" label="Buscar"
+      <q-btn :disable="mostrarBtn"  style="width:200px" rounded no-caps color="primary" label="Buscar"
       @click="filterTiendas()"/>
     </div>
 
@@ -73,7 +73,7 @@
       </q-scroll-area>
       <div v-else class="text-center text-h6 q-my-lg">No hay ninguna tienda</div>
 
-        <div class="row items-center justify-around q-py-md">
+        <div v-if="web" class="row items-center justify-around q-py-md">
           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 q-pa-xs" v-for="(card, index) in publicidad1" :key="index">
             <q-card style="border-radius: 24px; width:100%" clickable v-ripple>
               <img :src="!card.nuevo ? baseuPublicidad + card.fileName : card.fileName"
@@ -81,6 +81,21 @@
             </q-card>
           </div>
         </div>
+        <q-scroll-area
+        v-else
+        horizontal
+        style="height: 360px;"
+      >
+        <div class="row no-wrap q-py-md q-px-md q-gutter-md">
+          <div v-for="(card, index) in publicidad1" :key="index" >
+            <q-card style="border-radius: 24px; width:400px" clickable v-ripple>
+              <img :src="!card.nuevo ? baseuPublicidad + card.fileName : card.fileName"
+              style="height: 320px; width: 100%" @click="!card.nuevo ? irRuta(card.ruta) : ''"/>
+            </q-card>
+          </div>
+        </div>
+      </q-scroll-area>
+
     <div class="text-h6 q-my-md text-center text-grey-8">Nuestros nuevos productos</div>
     <q-scroll-area
         v-if="productos.length"
@@ -117,7 +132,7 @@
       </q-scroll-area>
       <div v-else class="text-center text-h6 q-my-lg">No hay ningún producto</div>
 
-        <div class="row items-center justify-around q-py-md">
+        <div v-if="web" class="row items-center justify-around q-py-md">
           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 q-pa-xs" v-for="(card, index) in publicidad2" :key="index">
             <q-card style="border-radius: 24px; width:100%" clickable v-ripple>
               <img :src="!card.nuevo ? baseuPublicidad + card.fileName : card.fileName"
@@ -125,9 +140,23 @@
             </q-card>
           </div>
         </div>
+        <q-scroll-area
+        v-else
+        horizontal
+        style="height: 360px;"
+      >
+        <div class="row no-wrap q-py-md q-px-md q-gutter-md">
+          <div v-for="(card, index) in publicidad2" :key="index" >
+            <q-card style="border-radius: 24px; width:400px" clickable v-ripple>
+              <img :src="!card.nuevo ? baseuPublicidad + card.fileName : card.fileName"
+              style="height: 320px; width: 100%" @click="!card.nuevo ? irRuta(card.ruta) : ''"/>
+            </q-card>
+          </div>
+        </div>
+      </q-scroll-area>
 
       <div class="text-h6 q-my-md text-center text-grey-8">Más tiendas</div>
-      <div v-if="masTiendas.length" class="row justify-around">
+      <div v-if="masTiendas.length" class="row">
         <div class="col-6 row justify-center q-mt-md" v-for="(card, index) in masTiendas" :key="index">
           <q-card style="width:95%; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 15px; border-top-right-radius: 15px">
               <q-img
@@ -183,7 +212,7 @@ export default {
       rol: 0,
       verProducto: false,
       login: true,
-      web: true,
+      web: false,
       baseuPublicidad: '',
       baseuProducto: '',
       baseuTiendas: '',
@@ -207,6 +236,7 @@ export default {
   },
   mounted () {
     this.web = this.$q.platform.is.desktop
+    console.log(this.web)
     this.baseuPublicidad = env.apiUrl + '/publicidad_img/'
     this.baseuProducto = env.apiUrl + '/producto_files/'
     this.baseuTiendas = env.apiUrl + '/perfil_img/'
