@@ -47,7 +47,7 @@
     <div v-else class="text-center text-h6 q-my-lg">No hay tiendas agregadas</div>
 
     <div class="q-my-sm text-center text-h6 text-grey-8">Más tiendas</div>
-      <div v-if="tiendas.length" class="row justify-around">
+      <div v-if="tiendas.length" class="row">
         <div class="col-6 row justify-center q-mt-md" v-for="(card, index) in tiendas" :key="index">
           <q-card style="width:95%; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 15px; border-top-right-radius: 15px">
               <q-img
@@ -77,7 +77,7 @@
       </div>
       <div v-else class="text-center text-h6 q-my-lg">No hay tiendas agregadas</div>
       <div v-if="tiendas.length" class="row items-center justify-center q-mt-lg">
-        <q-btn no-caps rounded label="Ver más tiendas" color="primary" size="lg" style="width: 20%"
+        <q-btn no-caps rounded label="Ver más tiendas" color="primary" size="lg" style="width: 200px"
         @click="verMas()" />
       </div>
   </q-page>

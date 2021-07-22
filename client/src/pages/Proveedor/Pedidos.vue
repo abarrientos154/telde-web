@@ -72,7 +72,7 @@
           </q-card-section>
         </q-card-section>
       </q-card>
-      <q-btn rounded no-caps color="primary" label="Ver mas" style="width:20%;" />
+      <q-btn rounded no-caps color="primary" label="Ver mas" style="width:200px;" />
     </div>
     <div v-else class="q-my-lg">
       <div class="text-center text-subtitle1">No tienes pedidos enviados</div>
@@ -106,7 +106,7 @@
           </q-card-section>
         </q-card-section>
       </q-card>
-      <q-btn rounded no-caps color="primary" label="Ver mas" size="lg" style="width:20%;" />
+      <q-btn rounded no-caps color="primary" label="Ver mas" size="lg" style="width:200px;" />
     </div>
     <div v-else class="q-my-lg">
       <div class="text-center text-subtitle1">No tienes pedidos finalizados</div>
