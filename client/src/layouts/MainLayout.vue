@@ -62,10 +62,27 @@
     <q-page-container class="q-mb-md">
       <router-view />
     </q-page-container>
+
+       <!-- <div footer class="row items-center justify-between bg-black text-white">
+         <div class="row justify-center col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+           <q-img src="novafooter.png" style="width:220px; height:220px; border-radius:100%" />
+         </div>
+         <div class="column items-center q-pb-md col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+           <div>
+              <div class="text-bold q-pb-md">Documentacion</div>
+              <div clickable v-ripple @click="getTicket(1)">Nombre documentació 01</div>
+              <div clickable v-ripple @click="getTicket(2)">Nombre documentació 02</div>
+           </div>
+         </div>
+         <div class="self-end col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+           <div class="text-bold q-pb-sm text-center">Todos los derechos reservados Nova Telde</div>
+         </div>
+       </div> -->
   </q-layout>
 </template>
 
 <script>
+import { openURL } from 'quasar'
 import { mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'MainLayout',
@@ -100,6 +117,16 @@ export default {
     cerrarSesion () {
       this.logout()
       this.$router.push('/login')
+    },
+    getTicket (val) {
+      if (val === 1) {
+        openURL('https://app.novatelde.com/GuiaDeUso_LSSICE.pdf')
+      } else {
+        openURL('https://app.novatelde.com/LSSI-CE_NOVATELDE SL.pdf')
+      }
+    },
+    ver () {
+      console.log('hola')
     },
     getInfo () {
       this.$api.get('user_info').then(res => {
