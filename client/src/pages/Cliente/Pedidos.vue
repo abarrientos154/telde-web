@@ -27,8 +27,9 @@
       <div class="column items-center justify-center">
         <div class="text-h6 q-ma-lg text-grey-8">Mis direcciones</div>
       </div>
-      <div class="column items-center q-gutter-md">
-          <q-card v-for="(card, index) in form.direccionC" :key="index" class="shadow-10" style="width: 30%;height:150px;border-radius:25px;">
+      <div class="row justify-center items-center">
+        <div class="col-xs-11 col-sm-7 col-md-7 col-lg-7 col-xl-7 q-pb-md" v-for="(card, index) in form.direccionC" :key="index">
+          <q-card class="shadow-10" style="width: 100%;height:150px;border-radius:25px;">
             <q-card-section class="row items-center justify-between">
               <div class="col-8 no-wrap">
                 <div class="text-h6 text-bold ellipsis">Dirección Registrada</div>
@@ -47,9 +48,10 @@
               </q-card-actions>
             </q-card-section>
           </q-card>
+        </div>
       </div>
       <div class="column items-center justify-center q-py-md">
-        <q-btn no-caps rounded color="primary" label="Agregar nueva" size="lg" style="width:20%"
+        <q-btn no-caps rounded color="primary" label="Agregar nueva" size="lg" style="width:200px"
         @click="actionDir(2)" />
       </div>
 
@@ -119,7 +121,7 @@
               </q-card-section>
             </q-card-section>
         </q-card>
-        <q-btn no-caps rounded color="primary" label="Ver mas" size="lg" style="width:20%" />
+        <q-btn no-caps rounded color="primary" label="Ver mas" size="lg" style="width:200px" />
       </div>
       <div v-else class="q-my-lg">
         <div class="text-center text-subtitle1">No tienes pedidos completados</div>

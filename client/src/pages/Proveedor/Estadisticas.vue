@@ -7,7 +7,8 @@
     </q-img>
 
     <div class="q-pt-lg row justify-center">
-        <q-card class="bg-blue column justify-between" style="height: 175px; width: 30%; border-radius: 30px">
+      <div class="col-xs-11 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+        <q-card class="bg-blue column justify-between" style="height: 175px; width: 100%; border-radius: 30px">
           <q-card-section class="col">
           </q-card-section>
           <q-card-section>
@@ -18,6 +19,7 @@
           </q-card-section>
         </q-card>
       </div>
+    </div>
 
       <div class="text-h6 q-ma-lg text-grey-8">Estadísticas de ventas</div>
       <div class="row justify-center q-px-lg q-mb-lg">
@@ -60,7 +62,7 @@
         </div>
       </div>
       <div class="row justify-center q-mb-lg">
-        <q-btn :disable="fecha === null ? true : false" rounded class="q-pa-xs" color="primary" label="Ver estadísticas" style="width: 25%;" no-caps
+        <q-btn :disable="fecha === null ? true : false" rounded class="q-pa-xs" color="primary" label="Ver estadísticas" style="width: 200px;" no-caps
         @click="getReport()"/>
       </div>
 
@@ -98,7 +100,7 @@
             </q-card>
           </div>
           <div class="col-12 row justify-center q-mb-md">
-            <q-btn rounded color="primary" @click="ver()" size="lg" :label="verMas ? 'Ver menos productos' : 'Ver más productos'" style="width: 2 0%;" no-caps/>
+            <q-btn rounded color="primary" @click="ver()" size="lg" :label="verMas ? 'Ver menos productos' : 'Ver más productos'" no-caps/>
           </div>
       </div>
       <div v-else class="text-center text-h6 q-my-lg">Aún no tienes productos vendidos</div>

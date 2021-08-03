@@ -27,11 +27,11 @@
     </div>
     </div>
     <div class="q-my-md row justify-center">
-      <q-btn :disable="mostrarBtn" style="width:20%" rounded no-caps color="primary" label="Buscar"
+      <q-btn :disable="mostrarBtn" style="width:200px" rounded no-caps color="primary" label="Buscar"
       @click="filterTiendas()"/>
     </div>
 
-    <div v-if="tiendas.length" class="row justify-around">
+    <div v-if="tiendas.length" class="row">
         <div class="col-6 row justify-center q-mt-md" v-for="(card, index) in tiendas" :key="index">
           <q-card style="width:95%; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 15px; border-top-right-radius: 15px">
               <q-img

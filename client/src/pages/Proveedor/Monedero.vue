@@ -7,20 +7,22 @@
     </q-img>
 
       <div class="q-pt-lg row justify-center">
-        <q-card class="bg-blue column justify-between" style="height: 175px; width: 30%; border-radius: 30px">
-          <q-card-section class="col">
-          </q-card-section>
-          <q-card-section>
-            <div class="text-caption text-white">Dinero de tu monedero</div>
-            <div class="row items-center justify-between">
-              <div class="text-h4 text-bold text-white q-mr-sm">€{{saldo_actual}}</div>
-              <div>
-                <q-btn :disable="saldo_actual > 0 ? false : true" class="q-px-sm col" color="primary" label="Solicitar" style="border-radius: 10px;" no-caps
-                @click="retiro = null, $v.retiro.$reset(), solicitar = true"/>
+        <div class="col-xs-11 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+          <q-card class="bg-blue column justify-between" style="height: 175px; width: 100%; border-radius: 30px">
+            <q-card-section class="col">
+            </q-card-section>
+            <q-card-section>
+              <div class="text-caption text-white">Dinero de tu monedero</div>
+              <div class="row items-center justify-between">
+                <div class="text-h4 text-bold text-white q-mr-sm">€{{saldo_actual}}</div>
+                <div>
+                  <q-btn :disable="saldo_actual > 0 ? false : true" class="q-px-sm col" color="primary" label="Solicitar" style="border-radius: 10px;" no-caps
+                  @click="retiro = null, $v.retiro.$reset(), solicitar = true"/>
+                </div>
               </div>
-            </div>
-          </q-card-section>
-        </q-card>
+            </q-card-section>
+          </q-card>
+        </div>
       </div>
 
       <div class="text-h6 q-ma-lg text-grey-8">Ultimas solicitudes</div>
@@ -53,7 +55,7 @@
           </q-card>
         </div>
         <div class="row justify-center q-mb-lg q-my-sm">
-          <q-btn rounded class="q-pa-xs" color="primary" :label="noMas ? 'Ver más' : 'Ver menos'" style="width: 20%;" no-caps
+          <q-btn rounded class="q-pa-xs" color="primary" :label="noMas ? 'Ver más' : 'Ver menos'" style="width: 200px;" no-caps
           @click="verMas()"/>
         </div>
       </div>
