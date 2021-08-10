@@ -68,7 +68,7 @@
            <q-img src="novafooter.png" style="width:220px; height:220px; border-radius:100%" />
          </div>
          <div class="column items-center q-pb-md col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-            <div class="text-bold q-pb-md" @click="getFile()">Términos y condiciones de uso</div>
+            <div class="text-bold q-pb-md cursor-pointer" @click="getFile()">Términos y condiciones de uso</div>
          </div>
          <div class="self-end col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
            <div class="text-bold q-pb-sm text-center">Todos los derechos reservados Nova Telde</div>
