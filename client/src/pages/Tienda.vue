@@ -21,13 +21,6 @@
             </q-img>
         </div>
         <q-rating readonly v-model="user.calificacion" icon-selected="star" icon="star_border" color="orange" :max="5" size="23px" />
-        <div class="row" >
-          <q-icon class="q-mr-lg" name="schedule" size="sm" />
-          <div class="">
-            <div class="ellipsis text-subtitle2">Horario de atención</div>
-            <div class="ellipsis text-subtitle2 text-grey"> {{user.hapertura && user.hcierre ? user.hapertura + ' - ' + user.hcierre : 'Libre'}} </div>
-          </div>
-        </div>
       </div>
       <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 col-xl-7" style="width:40%">
         <div class="row items-start">
@@ -51,22 +44,12 @@
             <div class="ellipsis text-subtitle2 text-grey"> {{user.telefono}} </div>
           </div>
         </div>
-
-        <div class="col-xs-7 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-          <div class="row items-start">
-            <q-icon class="col-1" name="date_range" size="sm" />
-            <div class="col q-ml-sm">
-              <div class="ellipsis text-subtitle2">Días de atención</div>
-              <div class="text-subtitle2 text-grey"> {{dias()}} </div>
-            </div>
-          </div>
-        </div>
       </div>
       </div>
     </div>
 
-    <div class="">
-    <q-scroll-area
+    <div>
+      <q-scroll-area
         v-if="user.images.length"
         horizontal
         style="height: 130px;"
@@ -78,14 +61,67 @@
             </q-img>
           </q-card>
         </div>
-    </q-scroll-area>
+      </q-scroll-area>
 
-    <q-dialog v-model="verImg">
-      <q-card>
-        <img :src="baseuImgsTienda + imgSelec" style="width: 500px;" />
-      </q-card>
-    </q-dialog>
+      <q-dialog v-model="verImg">
+        <q-card>
+          <img :src="baseuImgsTienda + imgSelec" style="width: 500px;" />
+        </q-card>
+      </q-dialog>
+    </div>
 
+    <div>
+      <div class="text-h6 q-ma-md text-grey-8">Horarios de atención</div>
+      <q-scroll-area
+        v-if="horarios.length"
+        horizontal
+        style="height: 240px"
+      >
+        <div class="row no-wrap q-py-md q-px-md q-gutter-md">
+          <div v-for="(hora, index) in horarios" :key="index" >
+            <q-card class="q-pa-md" style="width:400px; height:100%; border-radius: 15px">
+              <div class="text-bold text-subtitle1 ellipsis">{{hora.title}}</div>
+              <div class="row justify-around q-py-md">
+                  <div style="width:45%">
+                    <div>Apertura</div>
+                    <q-field filled dense stack-label>
+                      <template v-slot:prepend>
+                        <q-icon name="schedule" />
+                      </template>
+                      <template v-slot:control>
+                        <div class="self-center full-width no-outline" tabindex="0">{{hora.hapertura}}</div>
+                      </template>
+                    </q-field>
+                  </div>
+                  <div style="width:45%">
+                    <div>Cierre</div>
+                    <q-field filled dense stack-label>
+                      <template v-slot:prepend>
+                        <q-icon name="schedule" />
+                      </template>
+                      <template v-slot:control>
+                        <div class="self-center full-width no-outline" tabindex="0">{{hora.hcierre}}</div>
+                      </template>
+                    </q-field>
+                  </div>
+              </div>
+              <q-field filled dense stack-label>
+                <template v-slot:prepend>
+                  <q-icon name="date_range" />
+                </template>
+                <template v-slot:control>
+                  <div class="self-center full-width no-outline row">
+                    <div v-for="(item, index2) in hora.dias" :key="index2">{{index2 === 0 ? '' : ','}} {{item === 0 ? 'Lunes' : item === 1 ? 'Martes' : item === 2 ? 'Miércoles' : item === 3 ? 'Jueves' : item === 4 ? 'Viernes' : item === 5 ? 'Sábado' : 'Domingo'}}</div>
+                   </div>
+                </template>
+              </q-field>
+            </q-card>
+          </div>
+        </div>
+      </q-scroll-area>
+    </div>
+
+    <div class="">
     <div class="text-h6 q-ma-md text-grey-8">Comentarios</div>
     <q-scroll-area
         v-if="comentarios.length"
@@ -476,6 +512,7 @@ export default {
         images: [],
         calificacion: 0
       },
+      horarios: [],
       carrito: [],
       comentarios: [],
       allProductos: [],
@@ -542,7 +579,6 @@ export default {
     ...mapMutations('generals', ['logout']),
     async iniciarCompra () {
       this.$v.form.direccion.$touch()
-      console.log(this.$v.form)
       if (!this.$v.form.direccion.$error) {
         this.form.cliente_id = this.cliente._id
         this.form.tienda_id = this.user._id
@@ -585,7 +621,9 @@ export default {
       this.$api.post('user_by_id/' + id).then(res => {
         if (res) {
           this.user = res
-          console.log('user', this.user)
+          if (res.horarios) {
+            this.horarios = res.horarios
+          }
           if (res.status === 1) {
             this.logout()
             this.$router.push('/login')
