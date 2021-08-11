@@ -59,21 +59,25 @@
         </q-scroll-area>
       </q-drawer>
 
-    <q-page-container class="q-mb-md">
+    <q-page-container>
       <router-view />
     </q-page-container>
 
-       <div footer class="row items-center justify-between bg-black text-white">
-         <div class="row justify-center col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-           <q-img src="novafooter.png" style="width:220px; height:220px; border-radius:100%" />
-         </div>
-         <div class="column items-center q-pb-md col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-            <div class="text-bold q-pb-md cursor-pointer" @click="getFile()">Términos y condiciones de uso</div>
-         </div>
-         <div class="self-end col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-           <div class="text-bold q-pb-sm text-center">Todos los derechos reservados Nova Telde</div>
-         </div>
-       </div>
+      <q-footer>
+        <q-toolbar class="bg-black text-white q-py-md column">
+          <div class="row justify-between items-center" style="width: 100%">
+            <div class="row justify-center col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+              <q-img src="novafooter.png" style="width:220px; height:220px; border-radius:100%" />
+            </div>
+            <div class="column items-center q-pb-md col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <div class="text-bold q-pb-md cursor-pointer" @click="getFile()">Términos y condiciones de uso</div>
+            </div>
+            <div class="self-end col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+              <div class="text-bold q-pb-sm text-center">Todos los derechos reservados Nova Telde</div>
+            </div>
+          </div>
+        </q-toolbar>
+      </q-footer>
   </q-layout>
 </template>
 

@@ -228,7 +228,7 @@ export default {
       masTiendas: [],
       resultado: [],
       favoritoData: [],
-      categorias: ['Comida', 'Tienda'],
+      categorias: ['Comida', 'Desayunos', 'Meriendas', 'Tienda'],
       subCategoria1: ['Americana', 'Italiana', 'Mediterránea', 'Asiática', 'Latina'],
       subCategorias: [],
       idClient: ''
@@ -236,7 +236,6 @@ export default {
   },
   mounted () {
     this.web = this.$q.platform.is.desktop
-    console.log(this.web)
     this.baseuPublicidad = env.apiUrl + '/publicidad_img/'
     this.baseuProducto = env.apiUrl + '/producto_files/'
     this.baseuTiendas = env.apiUrl + '/perfil_img/'

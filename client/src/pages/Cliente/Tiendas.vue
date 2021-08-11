@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="q-mb-md">
     <q-img :src="'nopublicidad.jpg'" style="height: 150px; width: 100%; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px">
       <div class="absolute-full">
         <div class="absolute-center full-width text-bold text-h5 text-center">Conoce nuestras tiendas</div>
@@ -79,7 +79,7 @@ export default {
       allTiendas: [],
       tiendas: [],
       favoritoData: [],
-      categorias: ['Comida', 'Tienda'],
+      categorias: ['Comida', 'Desayunos', 'Meriendas', 'Tienda'],
       subCategoria1: ['Americana', 'Italiana', 'Mediterránea', 'Asiática', 'Latina'],
       subCategorias: []
     }
@@ -156,7 +156,7 @@ export default {
             } else {
               return v
             }
-          } else if (v.categoria === 'Tienda') {
+          } else {
             return v
           }
         }
