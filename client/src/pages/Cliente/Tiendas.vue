@@ -9,23 +9,22 @@
     <div class="column items-center justify-center">
      <div class="text-h6 q-mx-md text-grey-8 q-mt-md">Categoria</div>
     </div>
-      <div class="column items-center justify-center">
-      <div class="row no-wrap q-py-md q-px-md q-gutter-md">
+      <div class="row justify-center no-wrap q-py-md q-px-md q-gutter-md">
         <div v-for="(btn, index) in categorias" :key="index" >
           <q-btn no-caps class="q-px-md" :label="btn" :color="selecCategoria === btn ? 'primary' : 'blue-grey-11'" text-color="blue-grey-9"
           @click="filterCategoria(btn, 'cat')" />
         </div>
       </div>
-    <div v-if="subCategorias.length" class="text-h6 q-mx-md text-grey-8">Selecciona tu SubCategoria</div>
-    <div v-if="subCategorias.length">
+    <div v-if="subCategorias.length" class="text-h6 text-center q-mx-md text-grey-8">Selecciona tu SubCategoria</div>
+    <q-scroll-area v-if="subCategorias.length" horizontal style="height: 90px;">
       <div class="row no-wrap q-py-md q-px-md q-gutter-md">
         <div v-for="(btn, index) in subCategorias" :key="index" >
           <q-btn no-caps class="q-px-md" :label="btn" :color="selecSubCategoria === btn ? 'primary' : 'blue-grey-11'" text-color="blue-grey-9"
           @click="filterCategoria(btn, 'sub')" />
         </div>
       </div>
-    </div>
-    </div>
+    </q-scroll-area>
+
     <div class="q-my-md row justify-center">
       <q-btn :disable="mostrarBtn" style="width:200px" rounded no-caps color="primary" label="Buscar"
       @click="filterTiendas()"/>
@@ -79,8 +78,8 @@ export default {
       allTiendas: [],
       tiendas: [],
       favoritoData: [],
-      categorias: ['Comida', 'Desayunos', 'Meriendas', 'Tienda'],
-      subCategoria1: ['Americana', 'Italiana', 'Mediterránea', 'Asiática', 'Latina'],
+      categorias: ['Comida', 'Tienda'],
+      subCategoria1: ['Americana', 'Italiana', 'Mediterránea', 'Asiática', 'Latina', 'Desayunos', 'Meriendas'],
       subCategorias: []
     }
   },
