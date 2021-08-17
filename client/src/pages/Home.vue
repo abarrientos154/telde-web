@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img :src="!principal.nuevo ? baseuPublicidad + principal.fileName : principal.fileName" style="height: 400px; width: 100%;"
+    <img :src="!principal.nuevo ? baseuPublicidad + principal.fileName : principal.fileName" :style="web ? 'height: 400px; width: 100%' : 'height: 200px; width: 100%'"
     @click="!principal.nuevo ? irRuta(principal.ruta) : ''" />
     <div v-if="!login" class="absolute-top-right q-pa-md">
       <q-btn no-caps rounded color="primary" label="Iniciar sesión" to="/login" />
@@ -82,13 +82,13 @@
         <q-scroll-area
         v-else
         horizontal
-        style="height: 360px;"
+        style="height: 250px;"
       >
         <div class="row no-wrap q-py-md q-px-md q-gutter-md">
           <div v-for="(card, index) in publicidad1" :key="index" >
-            <q-card style="border-radius: 24px; width:400px" clickable v-ripple>
+            <q-card style="border-radius: 24px; width:350px" clickable v-ripple>
               <img :src="!card.nuevo ? baseuPublicidad + card.fileName : card.fileName"
-              style="height: 320px; width: 100%" @click="!card.nuevo ? irRuta(card.ruta) : ''"/>
+              style="height: 200px; width: 100%" @click="!card.nuevo ? irRuta(card.ruta) : ''"/>
             </q-card>
           </div>
         </div>
@@ -141,13 +141,13 @@
         <q-scroll-area
         v-else
         horizontal
-        style="height: 360px;"
+        style="height: 250px;"
       >
         <div class="row no-wrap q-py-md q-px-md q-gutter-md">
           <div v-for="(card, index) in publicidad2" :key="index" >
-            <q-card style="border-radius: 24px; width:400px" clickable v-ripple>
+            <q-card style="border-radius: 24px; width:350px" clickable v-ripple>
               <img :src="!card.nuevo ? baseuPublicidad + card.fileName : card.fileName"
-              style="height: 320px; width: 100%" @click="!card.nuevo ? irRuta(card.ruta) : ''"/>
+              style="height: 200px; width: 100%" @click="!card.nuevo ? irRuta(card.ruta) : ''"/>
             </q-card>
           </div>
         </div>
