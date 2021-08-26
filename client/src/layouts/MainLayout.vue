@@ -9,11 +9,12 @@
 
           <div v-if="web">
             <div v-if="rol !== 0">
-              <div v-if="rol !== 1" class="row justify-around items-center q-gutter-md" >
+              <div v-if="rol !== 1" class="row justify-around items-center q-gutter-sm" >
                 <div><q-btn :label="rol === 3 ? 'Tienda' : 'Inicio'" color="white" flat dense no-caps size="lg" @click="rol === 3 ? $router.push('/tienda/'+user_id) : $router.push('/inicio')" /></div>
                 <div><q-btn :label="rol === 3 ? 'Monedero' : 'Tiendas'" color="white" flat dense no-caps size="lg" @click="rol === 3 ? $router.push('/monedero/') : $router.push('/tiendas')" /></div>
                 <div><q-btn :label="rol === 3 ? 'Estadísticas' : 'Favoritos'" color="white" flat dense no-caps size="lg" @click="rol === 2 ? $router.push('/tiendas_favoritas') : $router.push('/estadisticas')" /></div>
                 <div><q-btn label="Pedidos" color="white" flat dense no-caps size="lg" @click="rol === 3 ? $router.push('/mis_pedidos_tienda') : $router.push('/mis_pedidos')" /></div>
+                <div><q-btn label="Perfil" color="white" flat dense no-caps size="lg" @click="rol === 3 ? $router.push('/editar-perfil') : $router.push('/editar-mi-perfil')" /></div>
                 <div><q-btn label="Cerrar sesión" color="white" flat dense no-caps size="lg" @click="cerrarSesion()" /></div>
               </div>
               <div v-else class="row justify-around items-center q-gutter-md" >
@@ -143,6 +144,7 @@ export default {
               { label: 'Tiendas', ruta: '/tiendas', icon: 'store' },
               { label: 'Favoritos', ruta: '/tiendas_favoritas', icon: 'favorite' },
               { label: 'Pedidos', ruta: '/mis_pedidos', icon: 'shopping_basket' },
+              { label: 'Perfil', ruta: '/editar-mi-perfil', icon: 'person' },
               { label: 'Cerrar sesión', ruta: '', icon: 'logout' }
             ]
           } else {
@@ -151,6 +153,7 @@ export default {
               { label: 'Monedero', ruta: '/monedero/', icon: 'monetization_on' },
               { label: 'Estadísticas', ruta: '/estadisticas', icon: 'description' },
               { label: 'Pedidos', ruta: '/mis_pedidos_tienda', icon: 'shopping_basket' },
+              { label: 'Perfil', ruta: '/editar-perfil', icon: 'person' },
               { label: 'Cerrar sesión', ruta: '', icon: 'logout' }
             ]
           }
